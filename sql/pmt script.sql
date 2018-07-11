@@ -5,6 +5,9 @@
 CREATE TABLE IF NOT EXISTS User(
      userId INT NOT NULL AUTO_INCREMENT,
      userName VARCHAR(255) NOT NULL,
+     firstName VARCHAR(255) NOT NULL,
+     lastName VARCHAR(255) NOT NULL,
+     email VARCHAR(255) NOT NULL,
      userPass VARCHAR(255),
      isAdmin TINYINT(1),
      PRIMARY KEY (userId)
