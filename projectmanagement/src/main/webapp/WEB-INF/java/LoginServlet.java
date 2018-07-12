@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
         DataProvider dataProvider = new HibernateDataProvider();
         User user = dataProvider.getUserByUsername(username);
         if(user != null && user.hasPassword(password)) {
-            resp.sendRedirect("index_user.html");
+            resp.sendRedirect("user/index_user.html");
         }
         else {
             resp.sendRedirect("index.html");
