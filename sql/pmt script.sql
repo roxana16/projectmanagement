@@ -10,7 +10,8 @@ CREATE TABLE IF NOT EXISTS User(
      email VARCHAR(255) NOT NULL,
      userPass VARCHAR(255),
      isAdmin TINYINT(1),
-     PRIMARY KEY (userId)
+     PRIMARY KEY (userId),
+     UNIQUE (userName)
 );
 
 -- TRUNCATE TABLE Project;
@@ -78,7 +79,8 @@ CREATE TABLE IF NOT EXISTS createProj (
      projectId INT NOT NULL,
      adminId INT NOT NULL,
      FOREIGN KEY (projectId) REFERENCES Project(projectId),
-     FOREIGN KEY (adminId) REFERENCES User(userId)
+     FOREIGN KEY (adminId) REFERENCES User(userId),
+     PRIMARY KEY (projectId, adminId)
 );
 
 -- TRUNCATE TABLE createTask;
@@ -87,7 +89,8 @@ CREATE TABLE IF NOT EXISTS createTask (
      userId INT NOT NULL,
      taskId INT NOT NULL,
      FOREIGN KEY (userId) REFERENCES User(userId),
-     FOREIGN KEY (taskId) REFERENCES Task(taskId)
+     FOREIGN KEY (taskId) REFERENCES Task(taskId),
+     PRIMARY KEY (userId, taskId)
 );
 
 -- TRUNCATE TABLE projectTask;
@@ -96,7 +99,8 @@ CREATE TABLE IF NOT EXISTS projectTask (
      projectId INT NOT NULL,
      taskId INT NOT NULL,
      FOREIGN KEY (projectId) REFERENCES Project(projectId),
-     FOREIGN KEY (taskId) REFERENCES Task(taskId)
+     FOREIGN KEY (taskId) REFERENCES Task(taskId),
+     PRIMARY KEY (projectId, TaskId)
 );
 
 -- TRUNCATE TABLE attachFile;
@@ -105,7 +109,8 @@ CREATE TABLE IF NOT EXISTS attachFile (
      filesId INT NOT NULL,
      taskId INT NOT NULL,
      FOREIGN KEY (filesId) REFERENCES Files(filesId),
-     FOREIGN KEY (taskId) REFERENCES Task(taskId)
+     FOREIGN KEY (taskId) REFERENCES Task(taskId),
+     PRIMARY KEY (filesId, TaskId)
 );
 
 -- TRUNCATE TABLE generateStatus;
@@ -114,7 +119,8 @@ CREATE TABLE IF NOT EXISTS generateStatus (
      statusId INT NOT NULL,
      taskId INT NOT NULL,
      FOREIGN KEY (statusId) REFERENCES Status(statusId),
-     FOREIGN KEY (taskId) REFERENCES Task(taskId)
+     FOREIGN KEY (taskId) REFERENCES Task(taskId),
+     PRIMARY KEY (statusId, TaskId)
 );
 
 -- TRUNCATE TABLE generateReport;
@@ -129,7 +135,8 @@ CREATE TABLE IF NOT EXISTS generateReport (
      generatorId INT NOT NULL,
      FOREIGN KEY (reportId) REFERENCES Report(reportId),
      FOREIGN KEY (userId) REFERENCES User(userId),
-	 FOREIGN KEY (generatorId) REFERENCES User(userId)
+	 FOREIGN KEY (generatorId) REFERENCES User(userId),
+     PRIMARY KEY (reportId)
 );
 
 -- TRUNCATE TABLE reportTask;
@@ -140,5 +147,6 @@ CREATE TABLE IF NOT EXISTS reportTask (
      reportId INT NOT NULL,
      FOREIGN KEY (reportId) REFERENCES Report(reportId),
      FOREIGN KEY (statusId) REFERENCES Status(statusId),
-     FOREIGN KEY (taskId) REFERENCES Task(taskId)
+     FOREIGN KEY (taskId) REFERENCES Task(taskId),
+     PRIMARY KEY (reportId, taskId)
 );
