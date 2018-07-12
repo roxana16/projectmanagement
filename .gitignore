@@ -30,59 +30,59 @@ hs_err_pid*
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
+projectmanagement/.idea/**/workspace.xml
+projectmanagement/.idea/**/tasks.xml
+projectmanagement/.idea/**/usage.statistics.xml
+projectmanagement/.idea/**/dictionaries
+projectmanagement/.idea/**/shelf
 
 # Sensitive or high-churn files
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
+projectmanagement/.idea/**/dataSources/
+projectmanagement/.idea/**/dataSources.ids
+projectmanagement/.idea/**/dataSources.local.xml
+projectmanagement/.idea/**/sqlDataSources.xml
+projectmanagement/.idea/**/dynamic.xml
+projectmanagement/.idea/**/uiDesigner.xml
+projectmanagement/.idea/**/dbnavigator.xml
 
 # Gradle
-.idea/**/gradle.xml
-.idea/**/libraries
+projectmanagement/.idea/**/gradle.xml
+projectmanagement/.idea/**/libraries
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
 # since they will be recreated, and may cause churn.  Uncomment if using
 # auto-import.
-.idea/modules.xml
-.idea/*.iml
-.idea/modules
+projectmanagement/.idea/modules.xml
+projectmanagement/.idea/*.iml
+projectmanagement/.idea/modules
 
 # CMake
-cmake-build-*/
+projectmanagement/cmake-build-*/
 
 # Mongo Explorer plugin
-.idea/**/mongoSettings.xml
+projectmanagement/.idea/**/mongoSettings.xml
 
 # File-based project format
-*.iws
+projectmanagement/*.iws
 
 # IntelliJ
-out/
+projectmanagement/out/
 
 # mpeltonen/sbt-idea plugin
-.idea_modules/
+projectmanagement/.idea_modules/
 
 # JIRA plugin
-atlassian-ide-plugin.xml
+projectmanagement/atlassian-ide-plugin.xml
 
 # Cursive Clojure plugin
-.idea/replstate.xml
+projectmanagement/.idea/replstate.xml
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
+projectmanagement/com_crashlytics_export_strings.xml
+projectmanagement/crashlytics.properties
+projectmanagement/crashlytics-build.properties
+projectmanagement/fabric.properties
 
 # Editor-based Rest Client
-.idea/httpRequests
+projectmanagement/.idea/httpRequests
