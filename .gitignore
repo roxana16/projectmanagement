@@ -1,4 +1,4 @@
-# gitIgnore for java projects, with additional ignores for intellij
+# gitIgnore for java projects, with additional ignores for intellij and maven
 
 
 
@@ -86,3 +86,15 @@ projectmanagement/fabric.properties
 
 # Editor-based Rest Client
 projectmanagement/.idea/httpRequests
+
+
+projectmanagement/target/
+projectmanagement/pom.xml.tag
+projectmanagement/pom.xml.releaseBackup
+projectmanagement/pom.xml.versionsBackup
+projectmanagement/pom.xml.next
+projectmanagement/release.properties
+projectmanagement/dependency-reduced-pom.xml
+projectmanagement/buildNumber.properties
+projectmanagement/.mvn/timing.properties
+projectmanagement/.mvn/wrapper/maven-wrapper.jar
