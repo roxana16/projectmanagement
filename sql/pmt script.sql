@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS User(
      firstName VARCHAR(255) NOT NULL,
      lastName VARCHAR(255) NOT NULL,
      email VARCHAR(255) NOT NULL,
-     userPass VARCHAR(255),
-     isAdmin TINYINT(1),
+     userPass VARCHAR(255) NOT NULL,
+     isAdmin BIT DEFAULT 0,
      PRIMARY KEY (userId),
      UNIQUE (userName)
 );
