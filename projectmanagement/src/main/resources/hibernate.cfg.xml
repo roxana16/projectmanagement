@@ -14,8 +14,8 @@
         <property name="connection.password">root</property>
 
 
-        <mapping class="Entity.Status"/>
-        <mapping class="Entity.User"/>
+        <mapping class="grupa1.Entity.Status"/>
+        <mapping class="grupa1.Entity.User"/>
 
 
         <!-- DB schema will be updated if needed -->

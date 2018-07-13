@@ -1,6 +1,6 @@
-package persistence;
+package grupa1.persistence;
 
-import Entity.User;
+import grupa1.Entity.User;
 import com.google.common.collect.Iterables;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
