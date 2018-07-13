@@ -1,7 +1,8 @@
+package grupa1;
 
-import Entity.User;
-import persistence.DataProvider;
-import persistence.HibernateDataProvider;
+import grupa1.Entity.User;
+import grupa1.persistence.DataProvider;
+import grupa1.persistence.HibernateDataProvider;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

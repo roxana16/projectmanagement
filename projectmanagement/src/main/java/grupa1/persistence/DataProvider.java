@@ -1,6 +1,6 @@
-package persistence;
+package grupa1.persistence;
 
-import Entity.User;
+import grupa1.Entity.User;
 
 public interface DataProvider {
 

@@ -1,4 +1,4 @@
-package Entity;
+package grupa1.Entity;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
