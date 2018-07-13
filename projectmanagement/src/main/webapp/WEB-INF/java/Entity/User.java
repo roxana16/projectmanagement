@@ -1,23 +1,24 @@
 package Entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class User {
-    private int userId;
+    private Integer userId;
     private String userName;
     private String firstName;
     private String lastName;
     private String email;
     private String userPass;
-    private Byte isAdmin;
+    private Boolean isAdmin;
 
     public User() {}
 
-    public User(String userName, String firstName, String lastName, String email, String userPass, Byte isAdmin) {
+    public User(String userName, String firstName, String lastName, String email, String userPass) {
+        this(userName, firstName, lastName, email, userPass, false);
+    }
+
+    public User(String userName, String firstName, String lastName, String email, String userPass, Boolean isAdmin) {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -26,21 +27,18 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
-    public User(String userName, String firstName, String lastName, String email, String userPass) {
-        this(userName, firstName, lastName, email, userPass, (byte)0);
-    }
-
     public boolean hasPassword(String password) {
         return userPass.equals(password);
     }
 
     @Id
     @Column(name = "userId")
-    public int getUserId() {
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
@@ -96,12 +94,12 @@ public class User {
 
     @Basic
     @Column(name = "isAdmin")
-    public Byte getIsAdmin() {
+    public Boolean getAdmin() {
         return isAdmin;
     }
 
-    public void setIsAdmin(Byte isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
     }
 
     @Override
@@ -111,7 +109,7 @@ public class User {
 
         User user = (User) o;
 
-        if (userId != user.userId) return false;
+        if (userId != null ? !userId.equals(user.userId) : user.userId != null) return false;
         if (userName != null ? !userName.equals(user.userName) : user.userName != null) return false;
         if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
         if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
@@ -124,7 +122,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        int result = userId;
+        int result = userId != null ? userId.hashCode() : 0;
         result = 31 * result + (userName != null ? userName.hashCode() : 0);
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
@@ -132,5 +130,18 @@ public class User {
         result = 31 * result + (userPass != null ? userPass.hashCode() : 0);
         result = 31 * result + (isAdmin != null ? isAdmin.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", userPass='" + userPass + '\'' +
+                ", isAdmin=" + isAdmin +
+                '}';
     }
 }

@@ -9,25 +9,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "Login", urlPatterns = {"/login"})
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "Register", urlPatterns = {"/register"})
+public class SignupServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        String firstName = req.getParameter("firstname");
+        String lastName = req.getParameter("lastname");
+        String email = req.getParameter("email");
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        System.out.println(username);
-        System.out.println(password);
         DataProvider dataProvider = new HibernateDataProvider();
-        User user = dataProvider.getUserByUsername(username);
-        System.out.println("login. user: " + user);
-        if(user != null && user.hasPassword(password)) {
+        User user = new User(
+                username,
+                firstName,
+                lastName,
+                email,
+                password
+        );
+        if(dataProvider.addUser(user) != null) {
             resp.sendRedirect("user/index_user.html");
         }
         else {
-            resp.sendRedirect("index.html");
+            resp.sendRedirect("signup.html");
         }
 
     }
 }
+

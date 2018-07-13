@@ -27,9 +27,9 @@ public class HibernateDataProvider implements DataProvider {
         }
     }
 
-    public int addUser(User user) {
+    public Integer addUser(User user) {
         session.beginTransaction();
-        int id = (int) session.save(user);
+        Integer id = (Integer) session.save(user);
         session.getTransaction().commit();
         return id;
     }
