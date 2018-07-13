@@ -1,7 +1,7 @@
--- DROP TABLE IF EXISTS User;
+DROP DATABASE `projectmanagement`;
+CREATE DATABASE `projectmanagement` DEFAULT CHARACTER SET utf8mb4 ;
+USE `projectmanagement`;
 
--- TRUNCATE DATABASE PMT;
--- TRUNCATE TABLE User;
 CREATE TABLE IF NOT EXISTS User(
      userId INT NOT NULL AUTO_INCREMENT,
      userName VARCHAR(255) NOT NULL,
@@ -14,8 +14,6 @@ CREATE TABLE IF NOT EXISTS User(
      UNIQUE (userName)
 );
 
--- TRUNCATE TABLE Project;
--- DROP TABLE IF EXISTS Project;
 CREATE TABLE IF NOT EXISTS Project (
      projectId INT NOT NULL AUTO_INCREMENT,
      projectContent VARCHAR(255),
@@ -24,8 +22,6 @@ CREATE TABLE IF NOT EXISTS Project (
      PRIMARY KEY (projectId)
 );
 
--- TRUNCATE TABLE Task;
--- DROP TABLE IF EXISTS Task;
 CREATE TABLE IF NOT EXISTS Task(
      taskId INT NOT NULL AUTO_INCREMENT,
      taskContent VARCHAR(255),
@@ -36,32 +32,24 @@ CREATE TABLE IF NOT EXISTS Task(
      PRIMARY KEY (taskId)
 );	
 
--- TRUNCATE TABLE Files;
--- DROP TABLE IF EXISTS Files;
 CREATE TABLE IF NOT EXISTS Files (
      filesId INT NOT NULL AUTO_INCREMENT,
      filesContent VARCHAR(255) NOT NULL,
      PRIMARY KEY (filesId)
 );
 
--- TRUNCATE TABLE Report;
--- DROP TABLE IF EXISTS Report;
 CREATE TABLE IF NOT EXISTS Report (
      reportId INT NOT NULL AUTO_INCREMENT,
      reportContent VARCHAR(255) NOT NULL,
      PRIMARY KEY (reportId)
 );
 
--- TRUNCATE TABLE Status;
--- DROP TABLE IF EXISTS Status;
 CREATE TABLE IF NOT EXISTS Status (
      statusId INT NOT NULL AUTO_INCREMENT,
      statusName VARCHAR(255) NOT NULL,
      PRIMARY KEY (statusId)
 );
 
--- TRUNCATE TABLE Comment;
--- DROP TABLE IF EXISTS Comment;
 CREATE TABLE IF NOT EXISTS Comment (
      commentId INT NOT NULL AUTO_INCREMENT,
      commentContent VARCHAR(2100) NOT NULL,
@@ -73,8 +61,6 @@ CREATE TABLE IF NOT EXISTS Comment (
      FOREIGN KEY (userId) REFERENCES User(userId)
 );
 
--- TRUNCATE TABLE createProj;
--- DROP TABLE IF EXISTS createProj;
 CREATE TABLE IF NOT EXISTS createProj (
      projectId INT NOT NULL,
      adminId INT NOT NULL,
@@ -83,8 +69,6 @@ CREATE TABLE IF NOT EXISTS createProj (
      PRIMARY KEY (projectId, adminId)
 );
 
--- TRUNCATE TABLE createTask;
--- DROP TABLE IF EXISTS createTask;
 CREATE TABLE IF NOT EXISTS createTask (
      userId INT NOT NULL,
      taskId INT NOT NULL,
@@ -93,8 +77,6 @@ CREATE TABLE IF NOT EXISTS createTask (
      PRIMARY KEY (userId, taskId)
 );
 
--- TRUNCATE TABLE projectTask;
--- DROP TABLE IF EXISTS projectTask;
 CREATE TABLE IF NOT EXISTS projectTask (
      projectId INT NOT NULL,
      taskId INT NOT NULL,
@@ -103,8 +85,6 @@ CREATE TABLE IF NOT EXISTS projectTask (
      PRIMARY KEY (projectId, TaskId)
 );
 
--- TRUNCATE TABLE attachFile;
--- DROP TABLE IF EXISTS attachFile;
 CREATE TABLE IF NOT EXISTS attachFile (
      filesId INT NOT NULL,
      taskId INT NOT NULL,
@@ -113,8 +93,6 @@ CREATE TABLE IF NOT EXISTS attachFile (
      PRIMARY KEY (filesId, TaskId)
 );
 
--- TRUNCATE TABLE generateStatus;
--- DROP TABLE IF EXISTS generateStatus;
 CREATE TABLE IF NOT EXISTS generateStatus (
      statusId INT NOT NULL,
      taskId INT NOT NULL,
@@ -122,12 +100,6 @@ CREATE TABLE IF NOT EXISTS generateStatus (
      FOREIGN KEY (taskId) REFERENCES Task(taskId),
      PRIMARY KEY (statusId, TaskId)
 );
-
--- TRUNCATE TABLE generateReport;
--- DROP TABLE IF EXISTS generateReport;
--- DROP TABLE IF EXISTS generateReportA;
--- DROP TABLE IF EXISTS generateReportU;
-
 
 CREATE TABLE IF NOT EXISTS generateReport (
      reportId INT NOT NULL,
@@ -139,8 +111,6 @@ CREATE TABLE IF NOT EXISTS generateReport (
      PRIMARY KEY (reportId)
 );
 
--- TRUNCATE TABLE reportTask;
--- DROP TABLE IF EXISTS reportTask;
 CREATE TABLE IF NOT EXISTS reportTask (
      taskId INT NOT NULL,
      statusId INT NOT NULL,
