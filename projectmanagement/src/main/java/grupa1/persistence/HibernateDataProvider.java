@@ -1,6 +1,6 @@
 package grupa1.persistence;
 
-import grupa1.Entity.User;
+import grupa1.Entity.*;
 import com.google.common.collect.Iterables;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,6 +14,7 @@ public class HibernateDataProvider implements DataProvider {
 
     public HibernateDataProvider() {
         session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
     }
     private static SessionFactory buildSessionFactory() {
         try {
@@ -27,22 +28,53 @@ public class HibernateDataProvider implements DataProvider {
         }
     }
 
-    public Integer addUser(User user) {
-        session.beginTransaction();
-        Integer id = (Integer) session.save(user);
+    public void commitChanges() {
         session.getTransaction().commit();
+        session.close();
+    }
+
+    public Integer addUser(User user) {
+        Integer id = (Integer) session.save(user);
+        return id;
+    }
+
+    public Integer addProject(Project project) {
+        Integer id = (Integer) session.save(project);
+        return id;
+    }
+
+    public Integer addStatus(Status status) {
+        Integer id = (Integer) session.save(status);
+        return id;
+    }
+
+    public Integer addTask(Task task) {
+        Integer id = (Integer) session.save(task);
+        return id;
+    }
+
+    public Integer addComment(Comment comment) {
+        Integer id = (Integer) session.save(comment);
         return id;
     }
 
     public User getUserByUsername(String username) {
-        session.beginTransaction();
         List<User> result = session
                 .createQuery("from User u where u.userName = :username", User.class)
                 .setParameter("username", username)
                 .list();
 
         User user = (User)Iterables.getOnlyElement(result, null);
-        session.getTransaction().commit();
         return user;
+    }
+
+    public List<Status> getAllStatuses() {
+        List<Status> statuses = session.createQuery("from Status", Status.class).list();
+        return statuses;
+    }
+
+    public List<Project> getAllProjects() {
+        List<Project> projects = session.createQuery("from Project", Project.class).list();
+        return projects;
     }
 }
