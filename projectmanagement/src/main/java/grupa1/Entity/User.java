@@ -1,16 +1,44 @@
 package grupa1.Entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class User {
+    @Id
+    @Column(name = "userId")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer userId;
+
+    @Basic
+    @Column(name = "userName")
     private String userName;
+
+    @Basic
+    @Column(name = "firstName")
     private String firstName;
+
+    @Basic
+    @Column(name = "lastName")
     private String lastName;
+
+    @Basic
+    @Column(name = "email")
     private String email;
+
+    @Basic
+    @Column(name = "userPass")
     private String userPass;
+
+    @Basic
+    @Column(name = "isAdmin")
     private Boolean isAdmin;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "userId")
+    private List<Task> tasks = new ArrayList<>();
 
     public User() {}
 
@@ -27,13 +55,23 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
+    public void assignTask(Task task) {
+        tasks.add(task);
+        task.setUser(this);
+    }
+
     public boolean hasPassword(String password) {
         return userPass.equals(password);
     }
 
-    @Id
-    @Column(name = "userId")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
     public Integer getUserId() {
         return userId;
     }
@@ -42,8 +80,6 @@ public class User {
         this.userId = userId;
     }
 
-    @Basic
-    @Column(name = "userName")
     public String getUserName() {
         return userName;
     }
@@ -52,8 +88,6 @@ public class User {
         this.userName = userName;
     }
 
-    @Basic
-    @Column(name = "firstName")
     public String getFirstName() {
         return firstName;
     }
@@ -62,8 +96,6 @@ public class User {
         this.firstName = firstName;
     }
 
-    @Basic
-    @Column(name = "lastName")
     public String getLastName() {
         return lastName;
     }
@@ -72,8 +104,6 @@ public class User {
         this.lastName = lastName;
     }
 
-    @Basic
-    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -82,8 +112,6 @@ public class User {
         this.email = email;
     }
 
-    @Basic
-    @Column(name = "userPass")
     public String getUserPass() {
         return userPass;
     }
@@ -92,8 +120,6 @@ public class User {
         this.userPass = userPass;
     }
 
-    @Basic
-    @Column(name = "isAdmin")
     public Boolean getAdmin() {
         return isAdmin;
     }

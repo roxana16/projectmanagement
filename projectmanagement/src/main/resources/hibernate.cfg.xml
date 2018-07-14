@@ -6,7 +6,7 @@
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/projectmanagement</property>
-        <property name="hibernate.connection.pool_size">1</property>
+        <property name="hibernate.connection.pool_size">100</property>
         <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -16,6 +16,9 @@
 
         <mapping class="grupa1.Entity.Status"/>
         <mapping class="grupa1.Entity.User"/>
+        <mapping class="grupa1.Entity.Project"/>
+        <mapping class="grupa1.Entity.Task"/>
+        <mapping class="grupa1.Entity.Comment"/>
 
 
         <!-- DB schema will be updated if needed -->

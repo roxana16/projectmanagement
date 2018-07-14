@@ -1,27 +1,35 @@
 package grupa1.Entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Status {
-    private int statusId;
-    private String statusName;
 
     @Id
     @Column(name = "statusId")
-    public int getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(int statusId) {
-        this.statusId = statusId;
-    }
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer statusId;
 
     @Basic
     @Column(name = "statusName")
+    private String statusName;
+
+
+    public Status() {}
+    public Status(String statusName) {
+        this.statusName = statusName;
+    }
+
+
+    public Integer getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(Integer statusId) {
+        this.statusId = statusId;
+    }
+
     public String getStatusName() {
         return statusName;
     }
@@ -48,5 +56,13 @@ public class Status {
         int result = statusId;
         result = 31 * result + (statusName != null ? statusName.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Status{" +
+                "statusId=" + statusId +
+                ", statusName='" + statusName + '\'' +
+                '}';
     }
 }
