@@ -5,7 +5,9 @@ import com.google.common.collect.Iterables;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.exception.ConstraintViolationException;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class HibernateDataProvider implements DataProvider {
@@ -16,46 +18,78 @@ public class HibernateDataProvider implements DataProvider {
         session = sessionFactory.getCurrentSession();
         session.beginTransaction();
     }
+
     private static SessionFactory buildSessionFactory() {
         try {
             // Create the SessionFactory from hibernate.cfg.xml
             return new Configuration().configure().buildSessionFactory();
-        }
-        catch (Throwable ex) {
+        } catch (Throwable ex) {
             // Make sure you log the exception, as it might be swallowed
             System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }
 
+
     public void commitChanges() {
-        session.getTransaction().commit();
-        session.close();
+        if(session.isOpen()) {
+            if(session.getTransaction().isActive())
+                session.getTransaction().commit();
+            session.close();
+        }
+    }
+
+    private Integer addObjectWithConstraintViolationChecks(Object objectToAdd) {
+        Integer id = null;
+        try {
+            id = (Integer) session.save(objectToAdd);
+        }
+        catch (ConstraintViolationException ex) {
+            session.getTransaction().rollback();
+            session.close();
+            id = null;
+        }
+        return id;
     }
 
     public Integer addUser(User user) {
-        Integer id = (Integer) session.save(user);
-        return id;
+        return addObjectWithConstraintViolationChecks(user);
     }
 
     public Integer addProject(Project project) {
-        Integer id = (Integer) session.save(project);
-        return id;
+        return addObjectWithConstraintViolationChecks(project);
     }
 
     public Integer addStatus(Status status) {
-        Integer id = (Integer) session.save(status);
-        return id;
+        return addObjectWithConstraintViolationChecks(status);
     }
 
     public Integer addTask(Task task) {
-        Integer id = (Integer) session.save(task);
-        return id;
+        return addObjectWithConstraintViolationChecks(task);
     }
 
     public Integer addComment(Comment comment) {
-        Integer id = (Integer) session.save(comment);
-        return id;
+        return addObjectWithConstraintViolationChecks(comment);
+    }
+
+    public User getUserById(Integer id) {
+        return session.get(User.class, id);
+    }
+
+    public Project getProjectById(Integer id) {
+        return session.get(Project.class, id);
+    }
+
+    public Task getTaskById(Integer id) {
+        return session.get(Task.class, id);
+    }
+
+    public Status getStatusById(Integer id) {
+        return session.get(Status.class, id);
+    }
+
+    public Comment getCommentById(Integer id) {
+        return session.get(Comment.class, id);
     }
 
     public User getUserByUsername(String username) {
@@ -64,7 +98,7 @@ public class HibernateDataProvider implements DataProvider {
                 .setParameter("username", username)
                 .list();
 
-        User user = (User)Iterables.getOnlyElement(result, null);
+        User user = Iterables.getOnlyElement(result, null);
         return user;
     }
 
