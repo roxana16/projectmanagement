@@ -76,7 +76,7 @@ public class User {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    private void setUserId(Integer userId) {
         this.userId = userId;
     }
 
@@ -120,7 +120,7 @@ public class User {
         this.userPass = userPass;
     }
 
-    public Boolean getAdmin() {
+    public Boolean isAdmin() {
         return isAdmin;
     }
 

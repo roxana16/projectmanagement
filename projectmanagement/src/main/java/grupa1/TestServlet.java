@@ -32,14 +32,17 @@ public class TestServlet extends HttpServlet {
         //getTasksForProject();
         //assignTaskToUser();
         //getTasksForUser();
+        //updateTask();
         //addCommentToTask();
         //getCommentsForTask();
     }
 
     private void addUser() {
         DataProvider provider = new HibernateDataProvider();
-        User user = new User("admin", "Bob", "TheAdministrator", "admin@mail.com", "admin", true);
-        int userId = provider.addUser(user);
+        User user = new User("test2", "Tester", "The Second", "tester@mail.com", "test");
+        Integer userId = provider.addUser(user);
+        if(userId == null)
+            System.out.println("Couldn't add user. Most likely because a user with that username already exists");
         provider.commitChanges();
     }
 
@@ -56,12 +59,22 @@ public class TestServlet extends HttpServlet {
         }
     }
 
+    private void updateTask() {
+        DataProvider provider = new HibernateDataProvider();
+        List<Project> projects = provider.getAllProjects();
+        Project theProject = projects.get(1);
+        Task task = theProject.getTasks().get(2);
+        task.setTaskName("A New Task Name");
+        task.setTaskContent("This is a generic description of the task that was updated.");
+        provider.commitChanges();
+    }
+
     private void addCommentToTask() {
         DataProvider provider = new HibernateDataProvider();
         List<Project> projects = provider.getAllProjects();
         Project theProject = projects.get(1);
         Task task = theProject.getTasks().get(2);
-        Comment comment = new Comment("Idk anymore");
+        Comment comment = new Comment("Test comment");
         User user = provider.getUserByUsername("test");
         comment.setUser(user);
         task.addComment(comment);
@@ -88,7 +101,7 @@ public class TestServlet extends HttpServlet {
         Date date;
         try {
             date = format.parse("2023-06-02");
-        }catch (ParseException ex) {
+        } catch (ParseException ex) {
             //handle incorrect time format
             return;
         }
@@ -96,7 +109,7 @@ public class TestServlet extends HttpServlet {
                 "Project number 3",
                 "Another project created for testing purposes only.\nNot a real project.",
                 date
-                );
+        );
         DataProvider provider = new HibernateDataProvider();
         int projectId = provider.addProject(project);
         provider.commitChanges();

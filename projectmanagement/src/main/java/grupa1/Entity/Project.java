@@ -65,7 +65,7 @@ public class Project {
         return projectId;
     }
 
-    public void setProjectId(Integer projectId) {
+    private void setProjectId(Integer projectId) {
         this.projectId = projectId;
     }
 

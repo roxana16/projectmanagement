@@ -26,7 +26,7 @@ public class Status {
         return statusId;
     }
 
-    public void setStatusId(Integer statusId) {
+    private void setStatusId(Integer statusId) {
         this.statusId = statusId;
     }
 

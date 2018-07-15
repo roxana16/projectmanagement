@@ -56,7 +56,7 @@ public class Comment {
         return commentId;
     }
 
-    public void setCommentId(Integer commentId) {
+    private void setCommentId(Integer commentId) {
         this.commentId = commentId;
     }
 

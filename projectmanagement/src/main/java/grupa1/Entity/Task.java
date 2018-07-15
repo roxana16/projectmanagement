@@ -95,7 +95,7 @@ public class Task {
         return taskId;
     }
 
-    public void setTaskId(Integer taskId) {
+    private void setTaskId(Integer taskId) {
         this.taskId = taskId;
     }
 
