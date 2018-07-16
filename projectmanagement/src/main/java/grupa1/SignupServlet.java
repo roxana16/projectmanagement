@@ -15,13 +15,13 @@ import java.io.IOException;
 public class SignupServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String firstName = req.getParameter("firstname");
-        String lastName = req.getParameter("lastname");
-        String email = req.getParameter("email");
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
+        String firstName = request.getParameter("firstname");
+        String lastName = request.getParameter("lastname");
+        String email = request.getParameter("email");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
         DataProvider dataProvider = new HibernateDataProvider();
         User user = new User(
                 username,
@@ -31,10 +31,10 @@ public class SignupServlet extends HttpServlet {
                 password
         );
         if(dataProvider.addUser(user) != null) {
-            resp.sendRedirect("user/index_user.html");
+            response.sendRedirect("user/index_user.html");
         }
         else {
-            resp.sendRedirect("signup.html");
+            response.sendRedirect("signup.html");
         }
 
     }
