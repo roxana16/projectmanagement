@@ -111,4 +111,9 @@ public class HibernateDataProvider implements DataProvider {
         List<Project> projects = session.createQuery("from Project", Project.class).list();
         return projects;
     }
+
+    public List<Task> getAllTasks() {
+        List<Task> tasks = session.createQuery("from Task", Task.class).list();
+        return tasks;
+    }
 }
