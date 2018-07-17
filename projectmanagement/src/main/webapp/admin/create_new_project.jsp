@@ -49,7 +49,7 @@
                         <li><a href="create_new_project.jsp">Create new project</a></li>
                     </ul>
                     <br>
-                    <form class="create-project" action="#">
+                    <form class="create-project" action="/createproject" METHOD="post">
                         <p>Title</p>
                         <input type="text" name="title">
                         <p>Description</p>
