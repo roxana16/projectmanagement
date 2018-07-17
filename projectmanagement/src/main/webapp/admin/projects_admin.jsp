@@ -21,15 +21,14 @@
     <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="index_user.html"><img src="../img/logo.png" alt="" title=""/></a>
+                <a href="index_admin.jsp"><img src="../img/logo.png" alt="" title=""/></a>
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li><a href="index_user.html">Home</a></li>
-                    <li id="projectsadmin"><a href="projects_user.html">Projects</a></li>
-                    <li id="myopenissues"><a href="my_open_issues_user.html">My open issues</a></li>
-                    <li id="allissues"><a href="all_issues_user.html">All issues</a></li>
-                    <li id="generatereportadmin"><a href="generate_report_user.html">Generate Report</a></li>
+                    <li><a href="index_admin.jsp">Home</a></li>
+                    <li id="projectsadmin"><a href="projects_admin.jsp">Projects</a></li>
+                    <li id="tasks"><a href="tasks.jsp">Tasks</a></li>
+                    <li id="generatereportadmin"><a href="generate_report.jsp">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
                             <button type="submit">Logout</button>
@@ -46,7 +45,8 @@
             <div class="col-lg-12 col-md-12 banner">
                 <div class="container-my-open-issues">
                     <ul class="sub-menu-projects">
-                        <li><a href="projects_user.html">All Projects</a></li>
+                        <li><a href="projects_admin.jsp">All Projects</a></li>
+                        <li><a href="create_new_project.jsp">Create new project</a></li>
                     </ul>
                     <br>
                     <h3>All projects</h3>

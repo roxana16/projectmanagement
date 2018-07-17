@@ -21,14 +21,15 @@
     <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="index_admin.html"><img src="../img/logo.png" alt="" title=""/></a>
+                <a href="index_user.jsp"><img src="../img/logo.png" alt="" title=""/></a>
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li><a href="index_admin.html">Home</a></li>
-                    <li id="projectsadmin"><a href="projects_admin.html">Projects</a></li>
-                    <li id="tasks"><a href="tasks.html">Tasks</a></li>
-                    <li id="generatereportadmin"><a href="generate_report.html">Generate Report</a></li>
+                    <li><a href="index_user.jsp">Home</a></li>
+                    <li id="projectsuser"><a href="projects_user.jsp">Projects</a></li>
+                    <li id="myopenissues"><a href="my_open_issues_user.jsp">My open issues</a></li>
+                    <li id="allissues"><a href="all_issues_user.jsp">All issues</a></li>
+                    <li id="generatereportuser"><a href="generate_report_user.jsp">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
                             <button type="submit">Logout</button>
@@ -44,21 +45,17 @@
         <div class="row fullscreen align-items-center justify-content-between">
             <div class="col-lg-12 col-md-12 banner">
                 <div class="container-my-open-issues">
-                    <ul class="sub-menu-projects">
-                        <li><a href="projects_admin.html">All Projects</a></li>
-                        <li><a href="create_new_project.html">Create new project</a></li>
-                    </ul>
-                    <br>
-                    <form class="create-project" action="#">
-                        <p>Title</p>
-                        <input type="text" name="title">
-                        <p>Description</p>
-                        <textarea name="description" rows="4" cols="50"> </textarea>
-                        <p>Release Date</p>
-                        <input type="date" name="releasedate">
-                        <br><br>
-                        <input type="submit" value="Create"/>
-                    </form>
+                    <h3>All issues</h3>
+                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie, nisl eu feugiat
+                        porttitor, turpis risus luctus sapien, ac egestas augue diam et enim. Vivamus at neque id nulla
+                        suscipit luctus quis vitae turpis. Quisque orci urna, volutpat ut consequat a, tincidunt eget
+                        nunc. Proin accumsan bibendum justo dapibus elementum. Duis convallis nibh at scelerisque
+                        mattis. Aliquam dapibus tellus metus, ac sollicitudin mi cursus in. In tincidunt dolor neque, et
+                        dapibus sem porta vitae. Quisque massa urna, sollicitudin quis nunc vel, vestibulum eleifend
+                        libero. Proin porttitor malesuada elit elementum lobortis. Nunc placerat mi eleifend ipsum
+                        venenatis vestibulum. Phasellus arcu odio, semper non dui at, dapibus hendrerit lacus. Phasellus
+                        dui metus, luctus sed purus ac, gravida interdum massa.
+                    </p>
                 </div>
             </div>
         </div>

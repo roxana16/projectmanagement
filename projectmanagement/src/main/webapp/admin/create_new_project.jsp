@@ -14,15 +14,6 @@
     <link rel="stylesheet" href="../css/animate.min.css">
     <link rel="stylesheet" href="../css/owl.carousel.css">
     <link rel="stylesheet" href="../css/main.css">
-
-    <style>
-        canvas {
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-        }
-    </style>
-
 </head>
 
 <body>
@@ -30,15 +21,14 @@
     <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="index_user.html"><img src="../img/logo.png" alt="" title=""/></a>
+                <a href="index_admin.jsp"><img src="../img/logo.png" alt="" title=""/></a>
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li><a href="index_user.html">Home</a></li>
-                    <li id="projectsuser"><a href="projects_user.html">Projects</a></li>
-                    <li id="myopenissues"><a href="my_open_issues_user.html">My open issues</a></li>
-                    <li id="allissues"><a href="all_issues_user.html">All issues</a></li>
-                    <li id="generatereportuser"><a href="generate_report_user.html">Generate Report</a></li>
+                    <li><a href="index_admin.jsp">Home</a></li>
+                    <li id="projectsadmin"><a href="projects_admin.jsp">Projects</a></li>
+                    <li id="tasks"><a href="tasks.jsp">Tasks</a></li>
+                    <li id="generatereportadmin"><a href="generate_report.jsp">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
                             <button type="submit">Logout</button>
@@ -49,19 +39,34 @@
         </div>
     </div>
 </header>
-<section class="generate-reports-user">
+<section class="banner-area">
     <div class="container">
-        <!--    <div class="row fullscreen align-items-center justify-content-between"> -->
-        <div class="generating">
-            <h4>My reports</h4>
-            <div class="charts-result">
-                <form action=""
-                <canvas id="pie-chart"></canvas>
+        <div class="row fullscreen align-items-center justify-content-between">
+            <div class="col-lg-12 col-md-12 banner">
+                <div class="container-my-open-issues">
+                    <ul class="sub-menu-projects">
+                        <li><a href="projects_admin.jsp">All Projects</a></li>
+                        <li><a href="create_new_project.jsp">Create new project</a></li>
+                    </ul>
+                    <br>
+                    <form class="create-project" action="#">
+                        <p>Title</p>
+                        <input type="text" name="title">
+                        <p>Description</p>
+                        <textarea name="description" rows="4" cols="50"> </textarea>
+                        <p>Release Date</p>
+                        <input type="date" name="releasedate">
+                        <br><br>
+                        <input type="submit" value="Create"/>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
+
+<!-- start footer Area -->
 <footer class="footer">
     <p>&copy; 2018 by Team 1</p>
 </footer>
@@ -84,30 +89,6 @@
 <script src="../js/owl.carousel.min.js"></script>
 <script src="../js/mail-script.js"></script>
 <script src="../js/main.js"></script>
-
-<script src="../js/Chart.bundle.min.js"></script>
-<script src="../js/utils.js"></script>
-
-
-<script>
-    new Chart(document.getElementById("pie-chart"), {
-        type: 'pie',
-        data: {
-            labels: ["Closed", "Open", "On Hold"],
-            datasets: [{
-                label: "Population (millions)",
-                backgroundColor: ["#E90909", "#00FF00", "#FF8000"],
-                data: [35, 22, 10]
-            }]
-        },
-        options: {
-            title: {
-                display: true,
-                text: 'Task Status'
-            }
-        }
-    });
-</script>
 
 </body>
 </html>

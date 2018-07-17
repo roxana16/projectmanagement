@@ -21,14 +21,14 @@
     <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="index_admin.html"><img src="../img/logo.png" alt="" title=""/></a>
+                <a href="index_admin.jsp"><img src="../img/logo.png" alt="" title=""/></a>
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li><a href="index_admin.html">Home</a></li>
-                    <li id="projectsadmin"><a href="projects_admin.html">Projects</a></li>
-                    <li id="tasks"><a href="tasks.html">Tasks</a></li>
-                    <li id="generatereportadmin"><a href="generate_report.html">Generate Report</a></li>
+                    <li><a href="index_admin.jsp">Home</a></li>
+                    <li id="projectsadmin"><a href="projects_admin.jsp">Projects</a></li>
+                    <li id="tasks"><a href="tasks.jsp">Tasks</a></li>
+                    <li id="generatereportadmin"><a href="generate_report.jsp">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
                             <button type="submit">Logout</button>
@@ -43,14 +43,33 @@
     <div class="container">
         <div class="row fullscreen align-items-center justify-content-between">
             <div class="col-lg-12 col-md-12 banner">
-                <h3>Welcome admin</h3>
+                <div class="container-my-open-issues">
+					<ul class="sub-menu-projects">
+                        <li><a href="all_tasks.jsp">View All Tasks</a></li>
+                        <li><a href="open_tasks.jsp">View Open Tasks</a></li>
+					</ul>
+                    <br>
+					
+                    <h3>My open issues</h3>
+                    <p>Change Status</p>
+                    <input name="changestatus" type="text">
+                    <p>Add Time</p>
+                    <input name="addtime" type="text">
+                    <p>Add Comment</p>
+                    <input name="addcomment" type="text">
+                    <p>Modify Description</p>
+                    <input name="modifydescription" type="text">
+
+                    <p>Attach Files</p>
+                    <input type="file" name="pic" accept="image/*">
+                    <input type="submit">
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-
-<!-- start footer Area -->
 <footer class="footer">
     <p>&copy; 2018 by Team 1</p>
 </footer>

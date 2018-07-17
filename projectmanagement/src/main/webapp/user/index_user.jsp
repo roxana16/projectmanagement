@@ -21,18 +21,18 @@
     <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="index_user.html"><img src="../img/logo.png" alt="" title=""/></a>
+                <a href="index_user.jsp"><img src="../img/logo.png" alt="" title=""/></a>
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li><a href="index_user.html">Home</a></li>
-                    <li id="projectsuser"><a href="projects_user.html">Projects</a></li>
-                    <li id="myopenissues"><a href="my_open_issues_user.html">My open issues</a></li>
-                    <li id="allissues"><a href="all_issues_user.html">All issues</a></li>
-                    <li id="generatereportuser"><a href="generate_report_user.html">Generate Report</a></li>
+                    <li><a href="index_user.jsp">Home</a></li>
+                    <li id="projectsuser"><a href="projects_user.jsp">Projects</a></li>
+                    <li id="myopenissues"><a href="my_open_issues_user.jsp">My open issues</a></li>
+                    <li id="allissues"><a href="all_issues_user.jsp">All issues</a></li>
+                    <li id="generatereportuser"><a href="generate_report_user.jsp">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
-                            <button type="submit">Logout</button>
+                        <button type="submit">Logout</button>
                         </form>
                     </li>
                 </ul>
@@ -44,26 +44,12 @@
     <div class="container">
         <div class="row fullscreen align-items-center justify-content-between">
             <div class="col-lg-12 col-md-12 banner">
-                <div class="container-my-open-issues">
-                    <h3>All issues</h3>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie, nisl eu feugiat
-                        porttitor, turpis risus luctus sapien, ac egestas augue diam et enim. Vivamus at neque id nulla
-                        suscipit luctus quis vitae turpis. Quisque orci urna, volutpat ut consequat a, tincidunt eget
-                        nunc. Proin accumsan bibendum justo dapibus elementum. Duis convallis nibh at scelerisque
-                        mattis. Aliquam dapibus tellus metus, ac sollicitudin mi cursus in. In tincidunt dolor neque, et
-                        dapibus sem porta vitae. Quisque massa urna, sollicitudin quis nunc vel, vestibulum eleifend
-                        libero. Proin porttitor malesuada elit elementum lobortis. Nunc placerat mi eleifend ipsum
-                        venenatis vestibulum. Phasellus arcu odio, semper non dui at, dapibus hendrerit lacus. Phasellus
-                        dui metus, luctus sed purus ac, gravida interdum massa.
-                    </p>
-                </div>
+                <h3>Welcome user</h3>
             </div>
         </div>
     </div>
 </section>
 
-
-<!-- start footer Area -->
 <footer class="footer">
     <p>&copy; 2018 by Team 1</p>
 </footer>
