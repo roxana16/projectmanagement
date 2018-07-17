@@ -14,15 +14,6 @@
     <link rel="stylesheet" href="../css/animate.min.css">
     <link rel="stylesheet" href="../css/owl.carousel.css">
     <link rel="stylesheet" href="../css/main.css">
-
-    <style>
-        canvas {
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-        }
-    </style>
-
 </head>
 
 <body>
@@ -30,7 +21,7 @@
     <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="index_user.jsp"><img src="../img/logo.png" alt="" title=""/></a>
+                <a href="index_auser.jsp"><img src="../img/logo.png" alt="" title=""/></a>
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
@@ -48,14 +39,32 @@
         </div>
     </div>
 </header>
-<section class="generate-reports-user">
+<section class="banner-area">
     <div class="container">
-        <!--    <div class="row fullscreen align-items-center justify-content-between"> -->
-        <div class="generating">
-            <h4>My reports</h4>
-            <div class="charts-result">
-                <form action=""
-                <canvas id="pie-chart"></canvas>
+        <div class="row fullscreen align-items-center justify-content-between">
+            <div class="col-lg-12 col-md-12 banner">
+                <div class="container-my-open-issues">
+					<ul class="sub-menu-projects">
+                        <li><a href="all_tasks_user.jsp">View All Tasks</a></li>
+                        <li><a href="open_tasks_user.jsp">View Open Tasks</a></li>
+					</ul>
+                    <br>
+					
+                    <h3>My open issues</h3>
+                    <p>Change Status</p>
+                    <input name="changestatus" type="text">
+                    <p>Add Time</p>
+                    <input name="addtime" type="text">
+                    <p>Add Comment</p>
+                    <input name="addcomment" type="text">
+                    <p>Modify Description</p>
+                    <input name="modifydescription" type="text">
+
+                    <p>Attach Files</p>
+                    <input type="file" name="pic" accept="image/*">
+                    <input type="submit">
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -83,30 +92,6 @@
 <script src="../js/owl.carousel.min.js"></script>
 <script src="../js/mail-script.js"></script>
 <script src="../js/main.js"></script>
-
-<script src="../js/Chart.bundle.min.js"></script>
-<script src="../js/utils.js"></script>
-
-
-<script>
-    new Chart(document.getElementById("pie-chart"), {
-        type: 'pie',
-        data: {
-            labels: ["Closed", "Open", "On Hold"],
-            datasets: [{
-                label: "Population (millions)",
-                backgroundColor: ["#E90909", "#00FF00", "#FF8000"],
-                data: [35, 22, 10]
-            }]
-        },
-        options: {
-            title: {
-                display: true,
-                text: 'Task Status'
-            }
-        }
-    });
-</script>
 
 </body>
 </html>

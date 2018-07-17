@@ -27,7 +27,7 @@
                 <ul class="nav-menu">
                     <li><a href="index_admin.jsp">Home</a></li>
                     <li id="projectsadmin"><a href="projects_admin.jsp">Projects</a></li>
-                    <li id="tasks"><a href="tasks.jsp">Tasks</a></li>
+                    <li id="tasks"><a href="tasks_admin.jsp">Tasks</a></li>
                     <li id="generatereportadmin"><a href="generate_report.jsp">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
@@ -45,8 +45,8 @@
             <div class="col-lg-12 col-md-12 banner">
                 <div class="container-my-open-issues">
 					<ul class="sub-menu-projects">
-                        <li><a href="all_tasks.jsp">View All Tasks</a></li>
-                        <li><a href="open_tasks.jsp">View Open Tasks</a></li>
+                        <li><a href="all_tasks_admin.jsp">View All Tasks</a></li>
+                        <li><a href="open_tasks_admin.jsp">View Open Tasks</a></li>
 					</ul>
                     <br>
 					

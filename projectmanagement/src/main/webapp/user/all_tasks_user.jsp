@@ -27,8 +27,7 @@
                 <ul class="nav-menu">
                     <li><a href="index_user.jsp">Home</a></li>
                     <li id="projectsuser"><a href="projects_user.jsp">Projects</a></li>
-                    <li id="myopenissuesuser"><a href="my_open_issues_user.jsp">My open issues</a></li>
-                    <li id="allissuesuser"><a href="all_issues_user.jsp">All issues</a></li>
+                    <li id="tasks"><a href="tasks_user.jsp">Tasks</a></li>
                     <li id="generatereportuser"><a href="generate_report_user.jsp">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
@@ -45,23 +44,38 @@
         <div class="row fullscreen align-items-center justify-content-between">
             <div class="col-lg-12 col-md-12 banner">
                 <div class="container-my-open-issues">
-                    <h3>My open issues</h3>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie, nisl eu feugiat
-                        porttitor, turpis risus luctus sapien, ac egestas augue diam et enim. Vivamus at neque id nulla
-                        suscipit luctus quis vitae turpis. Quisque orci urna, volutpat ut consequat a, tincidunt eget
-                        nunc. Proin accumsan bibendum justo dapibus elementum. Duis convallis nibh at scelerisque
-                        mattis. Aliquam dapibus tellus metus, ac sollicitudin mi cursus in. In tincidunt dolor neque, et
-                        dapibus sem porta vitae. Quisque massa urna, sollicitudin quis nunc vel, vestibulum eleifend
-                        libero. Proin porttitor malesuada elit elementum lobortis. Nunc placerat mi eleifend ipsum
-                        venenatis vestibulum. Phasellus arcu odio, semper non dui at, dapibus hendrerit lacus. Phasellus
-                        dui metus, luctus sed purus ac, gravida interdum massa.
-                    </p>
+					<ul class="sub-menu-projects">
+                        <li><a href="all_tasks_user.jsp">View All Tasks</a></li>
+                        <li><a href="open_tasks_user.jsp">View Open Tasks</a></li>
+					</ul>
+                    <br>
+                    <h3>All tasks</h3>
+                    <table style="width:100%">
+                        <tr>
+                            <th>Task ID</th>
+                            <th>Task Name</th>
+                            <th>Estimated time of Completion</th>
+                            <th>Status</th>
+                            <th>Time so far</th>
+                            <th>Assigned to</th>
+                        </tr>
+                        <tr>
+                            <td>Task ID</td>
+                            <td>Task Name</td>
+                            <td>Estimated time of Completion</td>
+                            <td>Status</td>
+                            <td>Time so far</td>
+                            <td>Assigned to</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+
+<!-- start footer Area -->
 <footer class="footer">
     <p>&copy; 2018 by Team 1</p>
 </footer>
