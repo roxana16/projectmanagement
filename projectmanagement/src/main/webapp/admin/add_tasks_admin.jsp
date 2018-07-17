@@ -46,11 +46,11 @@
                 <div class="container-my-open-issues">
 					<ul class="sub-menu-projects">
                         <li><a href="all_tasks_admin.jsp">View All Tasks</a></li>
-                        <li><a href="open_tasks_admin.jsp">View Open Tasks</a></li>
+                        <li><a href="add_tasks_admin.jsp">View Open Tasks</a></li>
 					</ul>
                     <br>
 					
-                    <h3>My open issues</h3>
+                    <h3>Add Task</h3>
                     <p>Change Status</p>
                     <input name="changestatus" type="text">
                     <p>Add Time</p>
