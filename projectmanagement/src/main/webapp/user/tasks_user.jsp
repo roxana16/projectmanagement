@@ -46,7 +46,6 @@
                 <div class="container-my-open-issues">
                     <ul class="sub-menu-projects">
                         <li><a href="all_tasks_user.jsp">View All Tasks</a></li>
-                        <li><a href="open_tasks_user.jsp">View Open Tasks</a></li>
                     </ul>
                     <br>
                 </div>
