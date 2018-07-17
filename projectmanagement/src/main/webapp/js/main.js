@@ -479,4 +479,9 @@ $(document).ready(function () {
         $('#mc_embed_signup').find('form').ajaxChimp();
     });
 
+    $('#datepicker').datepicker({
+        format: 'yyyy/mm/dd',
+        autoclose: true
+    });
+
 });

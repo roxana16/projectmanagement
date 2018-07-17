@@ -46,22 +46,20 @@
                 <div class="container-my-open-issues">
 					<ul class="sub-menu-projects">
                         <li><a href="all_tasks_admin.jsp">View All Tasks</a></li>
-                        <li><a href="add_tasks_admin.jsp">View Open Tasks</a></li>
+                        <li><a href="add_task_admin.jsp">Add Task</a></li>
+                        <li><a href="edit_task_admin.jsp">Edit Task</a></li>
 					</ul>
                     <br>
 					
-                    <h3>Add Task</h3>
-                    <p>Change Status</p>
-                    <input name="changestatus" type="text">
-                    <p>Add Time</p>
-                    <input name="addtime" type="text">
-                    <p>Add Comment</p>
-                    <input name="addcomment" type="text">
-                    <p>Modify Description</p>
-                    <input name="modifydescription" type="text">
-
-                    <p>Attach Files</p>
-                    <input type="file" name="pic" accept="image/*">
+                    <h4>Add Task</h4>
+                    <form>
+                    <p>Task Name</p>
+                    <input name="taskname" type="text">
+                    <p>Remaining Time</p>
+                    <input name="remainingtime" type="number" min="0">
+                    <p>Task Content</p>
+                    <textarea name="taskcontent" rows="4" cols="50"> </textarea>
+                    <br>
                     <input type="submit">
                     </form>
                 </div>

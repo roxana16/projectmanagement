@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../css/animate.min.css">
     <link rel="stylesheet" href="../css/owl.carousel.css">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
 </head>
 
 <body>
@@ -39,17 +40,44 @@
         </div>
     </div>
 </header>
-<section class="banner-area">
+
+<section class="banner-area"><br><br><br>
     <div class="container">
-        <div class="row fullscreen align-items-center justify-content-between">
+        <div class="row fullscreen align-items-left justify-content-between">
             <div class="col-lg-12 col-md-12 banner">
-                <div class="container-my-open-issues">
-                    <ul class="sub-menu-projects">
-                        <li><a href="/getallprojects">All Projects</a></li>
-                        <li><a href="create_new_project.jsp">Create new project</a></li>
-                    </ul>
-                    <br>
-                    <h3>All projects</h3>
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    View all projects
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                <div>
+                                    <c:out value="all_projects_admin" escapeXml="false" />
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Create new project
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                <jsp:include page="create_new_project.jsp" />
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,6 +108,8 @@
 <script src="../js/owl.carousel.min.js"></script>
 <script src="../js/mail-script.js"></script>
 <script src="../js/main.js"></script>
+<script type="application/javascript" src="../js/vendor/bootstrap.min.js"></script>
+<script type="application/javascript" src="../js/bootstrap-datepicker.js"></script>
 
 </body>
 </html>
