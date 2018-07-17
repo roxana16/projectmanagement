@@ -44,7 +44,7 @@
                     <div class ="new-member">
                         <p> New member in our team? Please create a new account.</p>
                     </div>
-                    <form action="index.jsp" method="POST">
+                    <form action="/register" method="POST">
                         <p>First Name</p>
                         <input name="firstname" type="text">
                         <p>Last Name</p>
