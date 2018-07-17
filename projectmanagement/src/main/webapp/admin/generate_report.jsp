@@ -38,7 +38,7 @@
                 <ul class="nav-menu">
                     <li><a href="index_admin.jsp">Home</a></li>
                     <li id="projectsadmin"><a href="projects_admin.jsp">Projects</a></li>
-                    <li id="tasks"><a href="tasks.jsp">Tasks</a></li>
+                    <li id="tasks"><a href="tasks_admin.jsp">Tasks</a></li>
                     <li id="generatereportadmin"><a href="generate_report.jsp">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">

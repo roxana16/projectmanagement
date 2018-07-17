@@ -27,9 +27,8 @@
                 <ul class="nav-menu">
                     <li><a href="index_user.jsp">Home</a></li>
                     <li id="projectsadmin"><a href="projects_user.jsp">Projects</a></li>
-                    <li id="myopenissues"><a href="my_open_issues_user.jsp">My open issues</a></li>
-                    <li id="allissues"><a href="all_issues_user.jsp">All issues</a></li>
-                    <li id="generatereportadmin"><a href="generate_report_user.jsp">Generate Report</a></li>
+                    <li id="tasks"><a href="tasks_user.jsp">Tasks</a></li>
+                    <li id="generatereportuser"><a href="generate_report_user.jsp">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
                             <button type="submit">Logout</button>
