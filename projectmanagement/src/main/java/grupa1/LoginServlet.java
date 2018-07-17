@@ -34,15 +34,15 @@ public class LoginServlet extends HttpServlet {
             newSession.setMaxInactiveInterval(5*60);
             newSession.setAttribute("username",user.getUserName());
             if(user.isAdmin()) {
-                response.sendRedirect("admin/index_admin.html");
+                response.sendRedirect("admin/index_admin.jsp");
             }
             else{
-                response.sendRedirect("user/index_user.html");
+                response.sendRedirect("user/index_user.jsp");
             }
         }
 
         else {
-            response.sendRedirect("index.html");
+            response.sendRedirect("index.jsp");
         }
 
     }

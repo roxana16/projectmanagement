@@ -14,6 +14,17 @@
     <link rel="stylesheet" href="../css/animate.min.css">
     <link rel="stylesheet" href="../css/owl.carousel.css">
     <link rel="stylesheet" href="../css/main.css">
+
+    <script src="../js/Chart.bundle.min.js"></script>
+    <script src="../js/utils.js"></script>
+
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,14 +32,14 @@
     <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="index_admin.html"><img src="../img/logo.png" alt="" title=""/></a>
+                <a href="index_admin.jsp"><img src="../img/logo.png" alt="" title=""/></a>
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li><a href="index_admin.html">Home</a></li>
-                    <li id="projectsadmin"><a href="projects_admin.html">Projects</a></li>
-                    <li id="tasks"><a href="tasks.html">Tasks</a></li>
-                    <li id="generatereportadmin"><a href="generate_report.html">Generate Report</a></li>
+                    <li><a href="index_admin.jsp">Home</a></li>
+                    <li id="projectsadmin"><a href="projects_admin.jsp">Projects</a></li>
+                    <li id="tasks"><a href="tasks.jsp">Tasks</a></li>
+                    <li id="generatereportadmin"><a href="generate_report.jsp">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
                             <button type="submit">Logout</button>
@@ -43,34 +54,10 @@
     <div class="container">
         <div class="row fullscreen align-items-center justify-content-between">
             <div class="col-lg-12 col-md-12 banner">
-                <div class="container-my-open-issues">
-					<ul class="sub-menu-projects">
-                        <li><a href="all_tasks.html">View All Tasks</a></li>
-                        <li><a href="open_tasks.html">View Open Tasks</a></li>
-					</ul>
-                    <br>
-                    <h3>All tasks</h3>
-                    <table style="width:100%">
-                        <tr>
-                            <th>Task ID</th>
-                            <th>Task Name</th>
-                            <th>Estimated time of Completion</th>
-                            <th>Status</th>
-                            <th>Time so far</th>
-                            <th>Assigned to</th>
-                        </tr>
-                        <tr>
-                            <td>Task ID</td>
-                            <td>Task Name</td>
-                            <td>Estimated time of Completion</td>
-                            <td>Status</td>
-                            <td>Time so far</td>
-                            <td>Assigned to</td>
-                        </tr>
-                    </table>
-                </div>
+                <canvas id="canvas"></canvas>
             </div>
         </div>
+    </div>
     </div>
 </section>
 
@@ -99,5 +86,65 @@
 <script src="../js/mail-script.js"></script>
 <script src="../js/main.js"></script>
 
+<script>
+    var color = Chart.helpers.color;
+    var barChartData = {
+        labels: ['Maria', 'Corina', 'Crina', 'Andrei'],
+        datasets: [{
+            label: 'New',
+            backgroundColor: color(window.chartColors.yellow).alpha(0.5).rgbString(),
+            borderColor: window.chartColors.yellow,
+            borderWidth: 1,
+            data: [
+                18,
+                25,
+                5,
+                50,
+            ]
+        }, {
+            label: 'In progress',
+            backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+            borderColor: window.chartColors.red,
+            borderWidth: 1,
+            data: [
+                Math.abs(randomScalingFactor()),
+                Math.abs(randomScalingFactor()),
+                Math.abs(randomScalingFactor()),
+                Math.abs(randomScalingFactor()),
+            ]
+        }, {
+            label: 'Finished',
+            backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+            borderColor: window.chartColors.blue,
+            borderWidth: 1,
+            data: [
+                Math.abs(randomScalingFactor()),
+                Math.abs(randomScalingFactor()),
+                Math.abs(randomScalingFactor()),
+                Math.abs(randomScalingFactor()),
+            ]
+        }]
+
+    };
+
+    window.onload = function () {
+        var ctx = document.getElementById('canvas').getContext('2d');
+        window.myBar = new Chart(ctx, {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'User Task Status'
+                }
+            }
+        });
+
+    };
+</script>
 </body>
 </html>

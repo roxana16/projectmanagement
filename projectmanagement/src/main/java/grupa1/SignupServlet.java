@@ -33,10 +33,10 @@ public class SignupServlet extends HttpServlet {
         Integer newUserId = dataProvider.addUser(user);
         dataProvider.commitChanges();
         if(newUserId != null) {
-            response.sendRedirect("user/index_user.html");
+            response.sendRedirect("user/index_user.jsp");
         }
         else {
-            response.sendRedirect("signup.html");
+            response.sendRedirect("signup.jsp");
         }
 
     }
