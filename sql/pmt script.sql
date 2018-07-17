@@ -87,3 +87,5 @@ CREATE TABLE IF NOT EXISTS Report_Task (
      FOREIGN KEY (taskId) REFERENCES Task(taskId) ON DELETE CASCADE,
      PRIMARY KEY (reportId, taskId)
 );
+
+INSERT INTO `projectmanagement`.`status` (`statusId`, `statusName`) VALUES ('1', 'Open'),('2', 'On Hold'),('3', 'In Progress'),('4', 'Closed');
