@@ -16,6 +16,11 @@ public class HibernateDataProvider implements DataProvider {
 
     public HibernateDataProvider() {
         session = sessionFactory.getCurrentSession();
+        if(session.getTransaction().isActive()) {
+            session.getTransaction().commit();
+            session.close();
+            session = sessionFactory.getCurrentSession();
+        }
         session.beginTransaction();
     }
 
