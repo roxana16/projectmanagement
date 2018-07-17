@@ -45,7 +45,7 @@
             <div class="col-lg-12 col-md-12 banner">
                 <div class="container-my-open-issues">
                     <ul class="sub-menu-projects">
-                        <li><a href="projects_user.jsp">All Projects</a></li>
+                        <li><a href="/getallprojects">All Projects</a></li>
                     </ul>
                     <br>
                     <h3>All projects</h3>
