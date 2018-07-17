@@ -30,7 +30,11 @@
                     <li id="myopenissues"><a href="my_open_issues_user.html">My open issues</a></li>
                     <li id="allissues"><a href="all_issues_user.html">All issues</a></li>
                     <li id="generatereportuser"><a href="generate_report_user.html">Generate Report</a></li>
-                    <li><button type="submit" formaction="/logout">Logout</button></li>
+                    <li>
+                        <form action="/logout" method="POST">
+                            <button type="submit">Logout</button>
+                        </form>
+                    </li>
                 </ul>
             </nav>
         </div>
