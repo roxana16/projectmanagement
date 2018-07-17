@@ -1,4 +1,4 @@
-DROP DATABASE `projectmanagement`;
+DROP DATABASE IF EXISTS `projectmanagement`;
 CREATE DATABASE `projectmanagement` DEFAULT CHARACTER SET utf8mb4 ;
 USE `projectmanagement`;
 
@@ -8,10 +8,12 @@ CREATE TABLE IF NOT EXISTS User(
      firstName VARCHAR(50) NOT NULL,
      lastName VARCHAR(50) NOT NULL,
      email VARCHAR(100) NOT NULL,
-     userPass VARCHAR(255) NOT NULL,
+     passwordHash binary(64) NOT NULL,
+	 hashSalt binary(16) NOT NULL,
      isAdmin BIT DEFAULT 0,
      PRIMARY KEY (userId),
-     UNIQUE (userName)
+     UNIQUE (userName),
+     UNIQUE (email)
 );
 
 CREATE TABLE IF NOT EXISTS Project (
@@ -88,4 +90,4 @@ CREATE TABLE IF NOT EXISTS Report_Task (
      PRIMARY KEY (reportId, taskId)
 );
 
-INSERT INTO `projectmanagement`.`status` (`statusId`, `statusName`) VALUES ('1', 'Open'),('2', 'On Hold'),('3', 'In Progress'),('4', 'Closed');
+INSERT INTO `projectmanagement`.`status` (`statusId`, `statusName`) VALUES (1, 'Open'),(2, 'On Hold'),(3, 'In Progress'),(4, 'Closed');
