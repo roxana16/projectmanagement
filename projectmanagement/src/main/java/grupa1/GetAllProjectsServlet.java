@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "All Projects", urlPatterns = {"/getallprojects"})
+@WebServlet(name = "All Projects", urlPatterns = {"/user/projects", "/admin/projects"})
 public class GetAllProjectsServlet extends HttpServlet {
 
     @Override
@@ -25,7 +25,9 @@ public class GetAllProjectsServlet extends HttpServlet {
         dataProvider.commitChanges();
         System.out.println("read projects from DB.");
         request.setAttribute("projects", projects);
-        request.getRequestDispatcher("admin/all_projects_admin.jsp").forward(request, response);;
+        System.out.println("request URI: " + request.getRequestURI());
+        String baseURI = request.getRequestURI().replace("/projects", "");
+        request.getRequestDispatcher(baseURI + "/projects.jsp").forward(request, response);
 
 
     }

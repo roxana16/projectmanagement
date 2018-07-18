@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <body>
 
-<form class="create-project" action="/createproject" METHOD="post">
+<form class="create-project" action="/admin/createproject" METHOD="GET">
     <div class="input-group">
         <div class="input-group-prepend">
             <span class="input-group-text">Title</span>

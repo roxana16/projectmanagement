@@ -1,3 +1,7 @@
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions"
+           prefix="fn" %>
 !DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -27,7 +31,7 @@
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
                     <li><a href="index_admin.jsp">Home</a></li>
-                    <li id="projectsadmin"><a href="projects_admin.jsp">Projects</a></li>
+                    <li id="projectsadmin"><a href="/admin/projects">Projects</a></li>
                     <li id="tasks"><a href="tasks_admin.jsp">Tasks</a></li>
                     <li id="generatereportadmin"><a href="generate_report.jsp">Generate Report</a></li>
                     <li>
@@ -49,7 +53,8 @@
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                        aria-expanded="true" aria-controls="collapseOne">
                                     View all projects
                                 </button>
                             </h5>
@@ -58,22 +63,25 @@
                         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
                                 <div>
-                                    <c:out value="all_projects_admin" escapeXml="false" />
-                            </div>
+                                    <c:forEach items="${projects}" var="project">
+                                            <p><c:out value="${project.getProjectTitle()}"/></p>
+                                    </c:forEach>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-header" id="headingTwo">
                             <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                        aria-expanded="false" aria-controls="collapseTwo">
                                     Create new project
                                 </button>
                             </h5>
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
-                                <jsp:include page="create_new_project.jsp" />
+                                <jsp:include page="create_new_project.jsp"/>
 
                             </div>
                         </div>

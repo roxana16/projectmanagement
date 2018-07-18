@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="projectmanagement@localhost" uuid="4223e595-68ad-4e55-9232-37d9a98eaae3">
+    <data-source source="LOCAL" name="src:main:resources:hibernate.cfg.xml/Hibernate" uuid="cb801d6b-663d-482b-b194-3526db3b8c9d">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml</remarks>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/projectmanagement</jdbc-url>
       <driver-properties>
@@ -15,13 +17,13 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="src:main:resources:hibernate.cfg.xml/Hibernate" uuid="cb801d6b-663d-482b-b194-3526db3b8c9d">
+    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="8412e26f-4c15-4716-ad6a-aec44f40f36b">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml</remarks>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/projectmanagement</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/projectmanagement?useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />

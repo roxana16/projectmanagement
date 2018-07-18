@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions"
+           prefix="fn" %>
+!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
 <head>
@@ -14,17 +18,7 @@
     <link rel="stylesheet" href="../css/animate.min.css">
     <link rel="stylesheet" href="../css/owl.carousel.css">
     <link rel="stylesheet" href="../css/main.css">
-
-    <script src="../js/Chart.bundle.min.js"></script>
-    <script src="../js/utils.js"></script>
-
-    <style>
-        canvas {
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
 </head>
 
 <body>
@@ -39,7 +33,7 @@
                     <li><a href="index_admin.jsp">Home</a></li>
                     <li id="projectsadmin"><a href="/admin/projects">Projects</a></li>
                     <li id="tasks"><a href="tasks_admin.jsp">Tasks</a></li>
-                    <li id="generatereportadmin"><a href="/generatereport">Generate Report</a></li>
+                    <li id="generatereportadmin"><a href="generate_report.jsp">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
                             <button type="submit">Logout</button>
@@ -50,14 +44,51 @@
         </div>
     </div>
 </header>
-<section class="banner-area">
+
+<section class="banner-area"><br><br><br>
     <div class="container">
-        <div class="row fullscreen align-items-center justify-content-between">
+        <div class="row fullscreen align-items-left justify-content-between">
             <div class="col-lg-12 col-md-12 banner">
-                <canvas id="canvas"></canvas>
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                        aria-expanded="true" aria-controls="collapseOne">
+                                    View all projects
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                <div>
+                                    <c:forEach items="${projects}" var="project">
+                                        <p><c:out value="${project.getProjectTitle()}"/></p>
+                                    </c:forEach>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                        aria-expanded="false" aria-controls="collapseTwo">
+                                    Create new project
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                <jsp:include page="create_new_project.jsp"/>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </section>
 
@@ -85,66 +116,8 @@
 <script src="../js/owl.carousel.min.js"></script>
 <script src="../js/mail-script.js"></script>
 <script src="../js/main.js"></script>
+<script type="application/javascript" src="../js/vendor/bootstrap.min.js"></script>
+<script type="application/javascript" src="../js/bootstrap-datepicker.js"></script>
 
-<script>
-    var color = Chart.helpers.color;
-    var barChartData = {
-        labels: ['Maria', 'Corina', 'Crina', 'Andrei'],
-        datasets: [{
-            label: 'New',
-            backgroundColor: color(window.chartColors.yellow).alpha(0.5).rgbString(),
-            borderColor: window.chartColors.yellow,
-            borderWidth: 1,
-            data: [
-                18,
-                25,
-                5,
-                50,
-            ]
-        }, {
-            label: 'In progress',
-            backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-            borderColor: window.chartColors.red,
-            borderWidth: 1,
-            data: [
-                Math.abs(randomScalingFactor()),
-                Math.abs(randomScalingFactor()),
-                Math.abs(randomScalingFactor()),
-                Math.abs(randomScalingFactor()),
-            ]
-        }, {
-            label: 'Finished',
-            backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-            borderColor: window.chartColors.blue,
-            borderWidth: 1,
-            data: [
-                Math.abs(randomScalingFactor()),
-                Math.abs(randomScalingFactor()),
-                Math.abs(randomScalingFactor()),
-                Math.abs(randomScalingFactor()),
-            ]
-        }]
-
-    };
-
-    window.onload = function () {
-        var ctx = document.getElementById('canvas').getContext('2d');
-        window.myBar = new Chart(ctx, {
-            type: 'bar',
-            data: barChartData,
-            options: {
-                responsive: true,
-                legend: {
-                    position: 'top',
-                },
-                title: {
-                    display: true,
-                    text: 'User Task Status'
-                }
-            }
-        });
-
-    };
-</script>
 </body>
 </html>
