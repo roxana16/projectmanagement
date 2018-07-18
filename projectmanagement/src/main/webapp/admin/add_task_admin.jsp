@@ -1,27 +1,30 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 <body>
 
-<form class="create-task" action="#" METHOD="post">
+<c:set var="users" value="${users}" scope="request"/>
+
+<form class="create-task" action="/createtask" METHOD="post">
     <div class="btn-group">
-    <select name="username" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-        <option value="#">User 1</option>
-        <option value="#">User 2</option>
-        <option value="#">User 3</option>
-    </select>
+        <select name="username" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <c:forEach items="${users}" var="user" varStatus="loop">
+                <option value = ${user.getUserId()}><c:out value="${user.getUserName()}"/></option>
+            </c:forEach>
+        </select>
     </div>
     <div class="btn-group">
         <select name="projectname" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-            <option value="#">Project 1</option>
-            <option value="#">Project 2</option>
-            <option value="#">Project 3</option>
+            <c:forEach items="${projects}" var="project" varStatus="loop">
+                <option value = ${project.getProjectId()}><c:out value="${project.getProjectTitle()}"/></option>
+            </c:forEach>
         </select>
     </div>
     <div class="btn-group">
         <select name="status" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-            <option value="#">Open</option>
-            <option value="#">On Hold</option>
-            <option value="#">Closed</option>
+            <c:forEach items="${statuses}" var="status" varStatus="loop">
+                <option value = ${status.getStatusId()}><c:out value="${status.getStatusName()}"/></option>
+            </c:forEach>
         </select>
     </div>
     <br><br>
