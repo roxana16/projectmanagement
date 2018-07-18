@@ -45,18 +45,42 @@
                         <p> New member in our team? Please create a new account.</p>
                     </div>
                     <form action="/register" method="POST">
-                        <p>First Name</p>
-                        <input name="firstname" type="text">
-                        <p>Last Name</p>
-                        <input name="lastname" type="text">
-                        <p>Email</p>
-                        <input name="email" type="text">
-                        <p>Username</p>
-                        <input name="username" type="text">
-                        <p>Password</p>
-                        <input name="password" type="password">
-                        <br><br>
-                        <input type="submit" value="Create a new account" />
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">First Name</span>
+                            </div>
+                            <input type="text" class="form-control" name="firstname" placeholder="First Name">
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Last Name</span>
+                            </div>
+                            <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Email</span>
+                            </div>
+                            <input type="text" class="form-control" name="email" placeholder="Email">
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Username</span>
+                            </div>
+                            <input type="text" class="form-control" name="username" placeholder="Username">
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Password</span>
+                            </div>
+                            <input type="password" class="form-control" name="password" placeholder="Password">
+                        </div>
+                        <br>
+                        <input type="submit" value="Create a new account" class="btn btn-outline-primary"/>
                     </form>
                 </div>
             </div>
