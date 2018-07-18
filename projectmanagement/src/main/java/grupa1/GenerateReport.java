@@ -37,7 +37,7 @@ public class GenerateReport extends HttpServlet {
         System.out.println("read Users from DB.");
         request.setAttribute("users", users);
 
-        request.getRequestDispatcher("admin/generate_report.jsp").forward(request, response);
+        request.getRequestDispatcher("/admin/generate_report.jsp").forward(request, response);
 
     }
 }

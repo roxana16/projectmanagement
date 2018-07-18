@@ -39,7 +39,7 @@ public class CreateTaskServlet extends HttpServlet {
         Project project = dataProvider.getProjectById(projectId);
         if(user == null || status == null || project == null) {
             request.setAttribute("error", "Unable to create project.");
-            request.getRequestDispatcher("admin/tasks_admin.jsp").forward(request, response); // Forward to JSP page to redisplay l
+            request.getRequestDispatcher("/admin/tasks.jsp").forward(request, response); // Forward to JSP page to redisplay l
             return;
         }
         Task task = new Task(taskName, taskContent,Integer.parseInt(remainingTime));
@@ -50,11 +50,11 @@ public class CreateTaskServlet extends HttpServlet {
         Integer newTaskId = dataProvider.addTask(task);
         dataProvider.commitChanges();
         if(newTaskId != null) {
-            response.sendRedirect("/getalltasks");
+            response.sendRedirect("/admin/tasks");
         }
         else {
             request.setAttribute("error", "Unable to create project.");
-            request.getRequestDispatcher("admin/tasks_admin.jsp").forward(request, response); // Forward to JSP page to redisplay login form with error.
+            request.getRequestDispatcher("/admin/tasks.jsp").forward(request, response); // Forward to JSP page to redisplay login form with error.
         }
     }
 }

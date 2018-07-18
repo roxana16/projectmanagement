@@ -1,8 +1,5 @@
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions"
-           prefix="fn" %>
-!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
 <head>
@@ -13,6 +10,7 @@
     <link rel="stylesheet" href="../css/linearicons.css">
     <link rel="stylesheet" href="../css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/magnific-popup.css">
     <link rel="stylesheet" href="../css/nice-select.css">
     <link rel="stylesheet" href="../css/animate.min.css">
@@ -26,14 +24,14 @@
     <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="index_admin.jsp"><img src="../img/logo.png" alt="" title=""/></a>
+                <a href="index.jsp"><img src="../img/logo.png" alt="" title=""/></a>
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li><a href="index_admin.jsp">Home</a></li>
-                    <li id="projectsadmin"><a href="/admin/projects">Projects</a></li>
-                    <li id="tasks"><a href="/getalltasks">Tasks</a></li>
-                    <li id="generatereportadmin"><a href="generate_report.jsp">Generate Report</a></li>
+                    <li><a href="/user/index.jsp">Home</a></li>
+                    <li id="projectsadmin"><a href="/user/projects">Projects</a></li>
+                    <li id="tasks"><a href="/user/tasks">Tasks</a></li>
+                    <li id="generatereportadmin"><a href="/user/generate_report.jsp">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
                             <input type="submit" value="Logout" class="btn btn-outline-primary"/>
@@ -55,7 +53,7 @@
                             <h5 class="mb-0">
                                 <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
                                         aria-expanded="true" aria-controls="collapseOne">
-                                    View all projects
+                                    View All Tasks
                                 </button>
                             </h5>
                         </div>
@@ -63,26 +61,27 @@
                         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
                                 <div>
-                                    <c:forEach items="${projects}" var="project">
-                                            <p><c:out value="${project.getProjectTitle()}"/></p>
-                                    </c:forEach>
+                                    <table style="width:100%">
+                                        <tr>
+                                            <th>Task ID</th>
+                                            <th>Task Name</th>
+                                            <th>Estimated time of Completion</th>
+                                            <th>Status</th>
+                                            <th>Time so far</th>
+                                            <th>Assigned to</th>
+                                        </tr>
+                                        <c:forEach items="${tasks}" var="task">
+                                            <tr>
+                                                <td><c:out value="${task.getTaskId()}"/></td>
+                                                <td><c:out value="${task.getTaskName()}"/></td>
+                                                <td><c:out value="${task.getEstimatedTimeOfCompletion()}"/></td>
+                                                <td><c:out value="${task.getStatus().getStatusName()}"/></td>
+                                                <td><c:out value="${task.getHoursSoFar()}h"/></td>
+                                                <td><c:out value="${task.getUser().getUserName()}"/></td>
+                                            </tr>
+                                        </c:forEach>
+                                    </table>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
-                                        aria-expanded="false" aria-controls="collapseTwo">
-                                    Create new project
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                            <div class="card-body">
-                                <jsp:include page="create_new_project.jsp"/>
-
                             </div>
                         </div>
                     </div>
@@ -92,8 +91,6 @@
     </div>
 </section>
 
-
-<!-- start footer Area -->
 <footer class="footer">
     <p>&copy; 2018 by Team 1</p>
 </footer>
@@ -118,6 +115,7 @@
 <script src="../js/main.js"></script>
 <script type="application/javascript" src="../js/vendor/bootstrap.min.js"></script>
 <script type="application/javascript" src="../js/bootstrap-datepicker.js"></script>
+
 
 </body>
 </html>

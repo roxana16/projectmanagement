@@ -32,13 +32,13 @@
     <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="index_admin.jsp"><img src="../img/logo.png" alt="" title=""/></a>
+                <a href="index.jsp"><img src="../img/logo.png" alt="" title=""/></a>
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li><a href="index_admin.jsp">Home</a></li>
+                    <li><a href="index.jsp">Home</a></li>
                     <li id="projectsadmin"><a href="/admin/projects">Projects</a></li>
-                    <li id="tasks"><a href="/getalltasks">Tasks</a></li>
+                    <li id="tasks"><a href="/admin/tasks">Tasks</a></li>
                     <li id="generatereportadmin"><a href="/generatereport">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">

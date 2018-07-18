@@ -21,14 +21,14 @@
     <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="user/index_user.jsp"><img src="img/logo.png" alt="" title=""/></a>
+                <a href="/user/index.jsp"><img src="img/logo.png" alt="" title=""/></a>
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li><a href="user/index_user.jsp">Home</a></li>
-                    <li id="projectsuser"><a href="user/projects_user.jsp">Projects</a></li>
-                    <li id="tasks"><a href="user/tasks_user.jsp">Tasks</a></li>
-                    <li id="generatereportuser"><a href="user/generate_report_user.jsp">Generate Report</a></li>
+                    <li><a href="/user/index.jsp">Home</a></li>
+                    <li id="projectsuser"><a href="/user/projects">Projects</a></li>
+                    <li id="tasks"><a href="/user/tasks.jsp">Tasks</a></li>
+                    <li id="generatereportuser"><a href="/user/generate_report.jsp">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
                         <button type="submit">Logout</button>

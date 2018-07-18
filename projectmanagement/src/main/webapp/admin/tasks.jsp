@@ -24,13 +24,13 @@
     <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="index_admin.jsp"><img src="../img/logo.png" alt="" title=""/></a>
+                <a href="index.jsp"><img src="../img/logo.png" alt="" title=""/></a>
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li><a href="/admin/index_admin.jsp">Home</a></li>
+                    <li><a href="/admin/index.jsp">Home</a></li>
                     <li id="projectsadmin"><a href="/admin/projects">Projects</a></li>
-                    <li id="tasks"><a href="/getalltasks">Tasks</a></li>
+                    <li id="tasks"><a href="/admin/tasks">Tasks</a></li>
                     <li id="generatereportadmin"><a href="/admin/generate_report.jsp">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
@@ -94,7 +94,7 @@
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
-                                <jsp:include page="add_task_admin.jsp" />
+                                <jsp:include page="add_task.jsp" />
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@
                         </div>
                         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
-                                <jsp:include page="edit_task_admin.jsp" />
+                                <jsp:include page="edit_task.jsp" />
                             </div>
                         </div>
                     </div>

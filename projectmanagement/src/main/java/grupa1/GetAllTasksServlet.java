@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "All Tasks", urlPatterns = {"/getalltasks"})
+@WebServlet(name = "All Tasks", urlPatterns = {"/admin/tasks", "/user/tasks"})
     public class GetAllTasksServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,7 +31,9 @@ import java.util.List;
         request.setAttribute("users", users);
         request.setAttribute("statuses", statuses);
         request.setAttribute("tasks", tasks);
-        request.getRequestDispatcher("admin/tasks_admin.jsp").forward(request, response);;
+        String baseURI = request.getRequestURI().replace("/tasks", "");
+        request.getRequestDispatcher(baseURI + "/tasks.jsp").forward(request, response);
+        //request.getRequestDispatcher("/admin/tasks.jsp").forward(request, response);;
 
 
     }
