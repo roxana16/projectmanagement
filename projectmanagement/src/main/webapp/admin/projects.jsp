@@ -64,7 +64,7 @@
                             <div class="card-body">
                                 <div>
                                     <c:forEach items="${projects}" var="project">
-                                        <p><c:out value="${project.getProjectTitle()}"/></p>
+                                        <a href="<c:out value="project?projectid=${project.getProjectId()}"/> "><p><c:out value="${project.getProjectTitle()}"/></p></a>
                                     </c:forEach>
                                 </div>
                             </div>

@@ -33,8 +33,5 @@ import java.util.List;
         request.setAttribute("tasks", tasks);
         String baseURI = request.getRequestURI().replace("/tasks", "");
         request.getRequestDispatcher(baseURI + "/tasks.jsp").forward(request, response);
-        //request.getRequestDispatcher("/admin/tasks.jsp").forward(request, response);;
-
-
     }
 }

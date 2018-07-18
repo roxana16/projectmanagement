@@ -1,4 +1,7 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions"
+           prefix="fn" %>
 !DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -15,6 +18,7 @@
     <link rel="stylesheet" href="../css/animate.min.css">
     <link rel="stylesheet" href="../css/owl.carousel.css">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
 </head>
 
 <body>
@@ -29,7 +33,7 @@
                     <li><a href="index.jsp">Home</a></li>
                     <li id="projectsadmin"><a href="/user/projects">Projects</a></li>
                     <li id="tasks"><a href="/user/tasks">Tasks</a></li>
-                    <li id="generatereportuser"><a href="generate_report.jsp">Generate Report</a></li>
+                    <li id="generatereportadmin"><a href="generate_report.jsp">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
                             <button type="submit">Logout</button>
@@ -40,6 +44,7 @@
         </div>
     </div>
 </header>
+
 <section class="banner-area"><br><br><br>
     <div class="container">
         <div class="row fullscreen align-items-left justify-content-between">
@@ -59,12 +64,13 @@
                             <div class="card-body">
                                 <div>
                                     <c:forEach items="${projects}" var="project">
-                                        <p><c:out value="${project.getProjectTitle()}"/></p>
+                                        <a href="<c:out value="project?projectid=${project.getProjectId()}"/> "><p><c:out value="${project.getProjectTitle()}"/></p></a>
                                     </c:forEach>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -95,6 +101,8 @@
 <script src="../js/owl.carousel.min.js"></script>
 <script src="../js/mail-script.js"></script>
 <script src="../js/main.js"></script>
+<script type="application/javascript" src="../js/vendor/bootstrap.min.js"></script>
+<script type="application/javascript" src="../js/bootstrap-datepicker.js"></script>
 
 </body>
 </html>

@@ -56,6 +56,7 @@ projectmanagement/.idea/**/libraries
 projectmanagement/.idea/modules.xml
 projectmanagement/.idea/*.iml
 projectmanagement/.idea/modules
+projectmanagement/*.iml
 
 # CMake
 projectmanagement/cmake-build-*/
