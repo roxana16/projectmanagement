@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+import grupa1.model.UserModel;
+
 @WebServlet(name = "Login", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
 
@@ -26,14 +28,20 @@ public class LoginServlet extends HttpServlet {
         User user = dataProvider.getUserByUsername(username);
         System.out.println("login. user: " + user);
         if(user != null && user.hasPassword(password)) {
+
             HttpSession oldSession = request.getSession(false);
+
             if (oldSession != null) {
                 oldSession.invalidate();
             }
+            UserModel userModel = new UserModel(user);
             HttpSession newSession = request.getSession(true);
             newSession.setMaxInactiveInterval(5*60);
             newSession.setAttribute("username",user.getUserName());
+
             if(user.isAdmin()) {
+                UserModel UserModel = new UserModel(user);
+                request.getSession().setAttribute(UserModel.KEY, userModel);
                 response.sendRedirect("admin/index_admin.jsp");
             }
             else{
