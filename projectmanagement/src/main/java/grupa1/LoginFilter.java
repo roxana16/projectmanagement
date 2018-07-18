@@ -26,7 +26,7 @@ public class LoginFilter implements Filter {
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
             throws java.io.IOException, ServletException {
 
-        System.out.println("sdlijsd;gjsd;gjpsdgjo");
+        System.out.println("login filter massage");
 
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;

@@ -21,11 +21,11 @@
     <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="index.html"><img src="img/logo.png" alt="" title=""/></a>
+                <a href="index.jsp"><img src="img/logo.png" alt="" title=""/></a>
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.jsp">Home</a></li>
                     <li id="about"><a href="#">About</a></li>
                     <li id="team"><a href="#">Team</a></li>
                     <li id="help"><a href="#">Help</a></li>
@@ -39,20 +39,18 @@
         <div class="row fullscreen align-items-center justify-content-between">
             <div class="view-data">
                 <div class="login">
-                    <form action="../login.jsp" method="POST">
-                    <h3>Log in</h3><br>
-                     <h6>Username</h6>
-                    <input type="text" name="username">
-                    <h6>Password</h6>
-                    <input type="password" name="password"><br>
-                    <br>
-                     <a href="index_user.html">
-                         <input type="submit" value="LOGIN"/>
-                     </a>
+                    <form action="login" method="POST">
+                        <h3>Log in</h3><br>
+                        <h6>Username</h6>
+                        <input type="text" name="username">
+                        <h6>Password</h6>
+                        <input type="password" name="password"><br>
+                        <br>
+                        <input type="submit" value="LOGIN"/>
                     </form>
                     <br>
                     <p>Don't have an account?</p>
-                    <a href="signup.html">
+                    <a href="signup.jsp">
                         <input type="submit" value="SIGNUP"/>
                     </a>
                 </div>
