@@ -15,6 +15,11 @@ public interface DataProvider {
     List<Status> getAllStatuses();
     List<Project> getAllProjects();
     List<User> getAllUsers();
+    User getUserById(Integer id);
+    Task getTaskById(Integer id);
+    Project getProjectById(Integer id);
+    Status getStatusById(Integer id);
+    Comment getCommentById(Integer id);
     void commitChanges();
 
 }
