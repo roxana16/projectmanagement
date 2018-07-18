@@ -4,34 +4,25 @@
 
 <form class="create-task" action="#" METHOD="post">
     <div class="btn-group">
-        <button name="username" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            User
-        </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">User 1</a>
-            <a class="dropdown-item" href="#">User 2</a>
-            <a class="dropdown-item" href="#">User 3</a>
-        </div>
+    <select name="username" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        <option value="#">User 1</option>
+        <option value="#">User 2</option>
+        <option value="#">User 3</option>
+    </select>
     </div>
     <div class="btn-group">
-        <button name="projectname" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Project
-        </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Project 1</a>
-            <a class="dropdown-item" href="#">Project 2</a>
-            <a class="dropdown-item" href="#">Project 3</a>
-        </div>
+        <select name="projectname" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <option value="#">Project 1</option>
+            <option value="#">Project 2</option>
+            <option value="#">Project 3</option>
+        </select>
     </div>
     <div class="btn-group">
-        <button name="status" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Status
-        </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Open</a>
-            <a class="dropdown-item" href="#">On hold</a>
-            <a class="dropdown-item" href="#">Closed</a>
-        </div>
+        <select name="status" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <option value="#">Open</option>
+            <option value="#">On Hold</option>
+            <option value="#">Closed</option>
+        </select>
     </div>
     <br><br>
     <div class="input-group">
