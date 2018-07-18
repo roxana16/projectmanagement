@@ -28,10 +28,10 @@
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li><a href="index_admin.jsp">Home</a></li>
+                    <li><a href="/admin/index_admin.jsp">Home</a></li>
                     <li id="projectsadmin"><a href="/admin/projects">Projects</a></li>
-                    <li id="tasks"><a href="tasks_admin.jsp">Tasks</a></li>
-                    <li id="generatereportadmin"><a href="generate_report.jsp">Generate Report</a></li>
+                    <li id="tasks"><a href="/admin/tasks_admin.jsp">Tasks</a></li>
+                    <li id="generatereportadmin"><a href="/admin/generate_report.jsp">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
                             <input type="submit" value="Logout" class="btn btn-outline-primary"/>
