@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 !DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -26,7 +27,7 @@
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
                     <li><a href="index_user.jsp">Home</a></li>
-                    <li id="projectsadmin"><a href="projects_user.jsp">Projects</a></li>
+                    <li id="projectsadmin"><a href="/user/projects">Projects</a></li>
                     <li id="tasks"><a href="tasks_user.jsp">Tasks</a></li>
                     <li id="generatereportuser"><a href="generate_report_user.jsp">Generate Report</a></li>
                     <li>
@@ -39,16 +40,31 @@
         </div>
     </div>
 </header>
-<section class="banner-area">
+<section class="banner-area"><br><br><br>
     <div class="container">
-        <div class="row fullscreen align-items-center justify-content-between">
+        <div class="row fullscreen align-items-left justify-content-between">
             <div class="col-lg-12 col-md-12 banner">
-                <div class="container-my-open-issues">
-                    <ul class="sub-menu-projects">
-                        <li><a href="/getallprojects">All Projects</a></li>
-                    </ul>
-                    <br>
-                    <h3>All projects</h3>
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                        aria-expanded="true" aria-controls="collapseOne">
+                                    View all projects
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                <div>
+                                    <c:forEach items="${projects}" var="project">
+                                        <p><c:out value="${project.getProjectTitle()}"/></p>
+                                    </c:forEach>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

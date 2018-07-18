@@ -26,7 +26,7 @@
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
                     <li><a href="index_user.jsp">Home</a></li>
-                    <li id="projectsadmin"><a href="projects_user.jsp">Projects</a></li>
+                    <li id="projectsadmin"><a href="/user/projects">Projects</a></li>
                     <li id="tasks"><a href="tasks_user.jsp">Tasks</a></li>
                     <li id="generatereportadmin"><a href="generate_report_user.jsp">Generate Report</a></li>
                     <li>

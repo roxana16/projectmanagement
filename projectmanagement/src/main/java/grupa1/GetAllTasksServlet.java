@@ -2,6 +2,7 @@ package grupa1;
 
 import grupa1.Entity.Project;
 import grupa1.Entity.Status;
+import grupa1.Entity.Task;
 import grupa1.Entity.User;
 import grupa1.persistence.DataProvider;
 import grupa1.persistence.HibernateDataProvider;
@@ -23,11 +24,13 @@ import java.util.List;
         List<Project> projects = dataProvider.getAllProjects();
         List<User> users = dataProvider.getAllUsers();
         List<Status> statuses = dataProvider.getAllStatuses();
+        List<Task> tasks = dataProvider.getAllTasks();
         dataProvider.commitChanges();
         System.out.println("read tasks from DB.");
         request.setAttribute("projects", projects);
         request.setAttribute("users", users);
         request.setAttribute("statuses", statuses);
+        request.setAttribute("tasks", tasks);
         request.getRequestDispatcher("admin/tasks_admin.jsp").forward(request, response);;
 
 

@@ -182,7 +182,6 @@ public class User {
                 ", passwordHash=" + Arrays.toString(passwordHash) +
                 ", hashSalt=" + Arrays.toString(hashSalt) +
                 ", isAdmin=" + isAdmin +
-                ", tasks=" + tasks +
                 '}';
     }
 }

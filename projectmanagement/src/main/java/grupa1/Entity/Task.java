@@ -2,8 +2,11 @@ package grupa1.Entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Entity
 public class Task {
@@ -55,7 +58,7 @@ public class Task {
     }
 
     public Task(String taskName, String taskContent, Integer remainingHours) {
-        this(taskContent, taskName, new Timestamp(System.currentTimeMillis()), remainingHours);
+        this(taskName, taskContent, new Timestamp(System.currentTimeMillis()), remainingHours);
     }
 
     public Task(String taskName, String taskContent) {
@@ -131,6 +134,29 @@ public class Task {
     public void setRemainingHours(Integer remainingHours) {
         this.remainingHours = remainingHours;
     }
+
+    public String getEstimatedTimeOfCompletion() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(startTime.getTime());
+        calendar.add(Calendar.HOUR_OF_DAY, remainingHours);
+        return calendar.getTime().toString();
+    }
+
+    public Integer getHoursSoFar() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(startTime.getTime());
+        calendar.add(Calendar.HOUR_OF_DAY, remainingHours);
+        Date currentDate = new Date();
+        if(calendar.before(currentDate)) {
+            return remainingHours;
+        }
+        else {
+            long timeDifference = currentDate.getTime() - startTime.getTime();
+            Integer hoursBetween = (int) TimeUnit.MILLISECONDS.toHours(timeDifference);
+            return hoursBetween;
+        }
+    }
+
 
     @Override
     public boolean equals(Object o) {

@@ -3,7 +3,6 @@
 <html lang="zxx" class="no-js">
 <body>
 
-<c:set var="users" value="${users}" scope="request"/>
 
 <form class="create-task" action="/createtask" METHOD="post">
     <div class="btn-group">

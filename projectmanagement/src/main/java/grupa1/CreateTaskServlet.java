@@ -50,7 +50,7 @@ public class CreateTaskServlet extends HttpServlet {
         Integer newTaskId = dataProvider.addTask(task);
         dataProvider.commitChanges();
         if(newTaskId != null) {
-            response.sendRedirect("admin/tasks_admin.jsp");
+            response.sendRedirect("/getalltasks");
         }
         else {
             request.setAttribute("error", "Unable to create project.");

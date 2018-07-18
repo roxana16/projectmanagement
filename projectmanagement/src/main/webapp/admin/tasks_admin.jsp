@@ -30,7 +30,7 @@
                 <ul class="nav-menu">
                     <li><a href="/admin/index_admin.jsp">Home</a></li>
                     <li id="projectsadmin"><a href="/admin/projects">Projects</a></li>
-                    <li id="tasks"><a href="/admin/tasks_admin.jsp">Tasks</a></li>
+                    <li id="tasks"><a href="/getalltasks">Tasks</a></li>
                     <li id="generatereportadmin"><a href="/admin/generate_report.jsp">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
@@ -60,7 +60,26 @@
                         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
                                 <div>
-                                    <c:out value="all_tasks_admin" escapeXml="false" />
+                                    <table style="width:100%">
+                                        <tr>
+                                            <th>Task ID</th>
+                                            <th>Task Name</th>
+                                            <th>Estimated time of Completion</th>
+                                            <th>Status</th>
+                                            <th>Time so far</th>
+                                            <th>Assigned to</th>
+                                        </tr>
+                                        <c:forEach items="${tasks}" var="task">
+                                            <tr>
+                                                <td><c:out value="${task.getTaskId()}"/></td>
+                                                <td><c:out value="${task.getTaskName()}"/></td>
+                                                <td><c:out value="${task.getEstimatedTimeOfCompletion()}"/></td>
+                                                <td><c:out value="${task.getStatus().getStatusName()}"/></td>
+                                                <td><c:out value="${task.getHoursSoFar()}h"/></td>
+                                                <td><c:out value="${task.getUser().getUserName()}"/></td>
+                                            </tr>
+                                        </c:forEach>
+                                    </table>
                                 </div>
                             </div>
                         </div>
