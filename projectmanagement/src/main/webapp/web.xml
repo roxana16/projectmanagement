@@ -54,6 +54,18 @@
     <!-- -->
 
     <!-- -->
+    <servlet>
+        <servlet-name>AssistanceServlet</servlet-name>
+        <servlet-class>grupa1.AssistanceServlet</servlet-class>
+    </servlet>
+
+	<servlet-mapping>
+		<servlet-name>AssistanceServlet</servlet-name>
+		<url-pattern>/help</url-pattern>
+	</servlet-mapping>
+    <!-- -->
+
+    <!-- -->
     <filter>
         <filter-name>LoginFilter</filter-name>
         <filter-class>grupa1.LoginFilter</filter-class>

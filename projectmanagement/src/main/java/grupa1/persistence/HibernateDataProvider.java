@@ -77,6 +77,10 @@ public class HibernateDataProvider implements DataProvider {
         return addObjectWithConstraintViolationChecks(comment);
     }
 
+    public Integer addAssistance(Assistance assistance) {
+        return addObjectWithConstraintViolationChecks(assistance);
+    }
+
     public User getUserById(Integer id) {
         return session.get(User.class, id);
     }

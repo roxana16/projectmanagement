@@ -12,6 +12,7 @@ public interface DataProvider {
     Integer addStatus(Status status);
     Integer addTask(Task task);
     Integer addComment(Comment comment);
+    Integer addAssistance(Assistance assistance);
     List<Status> getAllStatuses();
     List<Project> getAllProjects();
     List<User> getAllUsers();

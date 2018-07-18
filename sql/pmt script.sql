@@ -90,4 +90,13 @@ CREATE TABLE IF NOT EXISTS Report_Task (
      PRIMARY KEY (reportId, taskId)
 );
 
+CREATE TABLE Assistance (
+  assistanceId INT NOT NULL AUTO_INCREMENT,
+  firstName varchar(255),
+  lastName varchar(255),
+  email varchar(255),
+  subject blob,
+  PRIMARY KEY (`assistanceId`)
+);
+
 INSERT INTO `projectmanagement`.`status` (`statusId`, `statusName`) VALUES (1, 'Open'),(2, 'On Hold'),(3, 'In Progress'),(4, 'Closed');

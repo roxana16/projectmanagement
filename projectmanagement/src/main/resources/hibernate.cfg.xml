@@ -19,7 +19,7 @@
         <mapping class="grupa1.Entity.Project"/>
         <mapping class="grupa1.Entity.Task"/>
         <mapping class="grupa1.Entity.Comment"/>
-
+        <mapping class="grupa1.Entity.Assistance" />
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
