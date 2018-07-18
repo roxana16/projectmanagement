@@ -3,7 +3,6 @@ package grupa1.Entity;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -30,7 +29,7 @@ public class Task {
 
     @Basic
     @Column(name = "remainingHours", nullable = true)
-    private Integer remainingHours;
+    private Integer estimatedHoursNeeded;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "statusId", nullable = false)
@@ -50,15 +49,15 @@ public class Task {
 
     public Task() {}
 
-    public Task(String taskName, String taskContent, Timestamp startTime, Integer remainingHours) {
+    public Task(String taskName, String taskContent, Timestamp startTime, Integer estimatedHoursNeeded) {
         this.taskContent = taskContent;
         this.taskName = taskName;
         this.startTime = startTime;
-        this.remainingHours = remainingHours;
+        this.estimatedHoursNeeded = estimatedHoursNeeded;
     }
 
-    public Task(String taskName, String taskContent, Integer remainingHours) {
-        this(taskName, taskContent, new Timestamp(System.currentTimeMillis()), remainingHours);
+    public Task(String taskName, String taskContent, Integer estimatedHoursNeeded) {
+        this(taskName, taskContent, new Timestamp(System.currentTimeMillis()), estimatedHoursNeeded);
     }
 
     public Task(String taskName, String taskContent) {
@@ -127,28 +126,52 @@ public class Task {
         this.startTime = startTime;
     }
 
-    public Integer getRemainingHours() {
-        return remainingHours;
+    public Integer getEstimatedHoursNeeded() {
+        return estimatedHoursNeeded;
     }
 
-    public void setRemainingHours(Integer remainingHours) {
-        this.remainingHours = remainingHours;
+    public void setEstimatedHoursNeeded(Integer remainingHours) {
+        this.estimatedHoursNeeded = remainingHours;
+    }
+
+    public Integer getHoursLeft() {
+        Calendar expectedTimeOfCompletion = Calendar.getInstance();
+        expectedTimeOfCompletion.setTimeInMillis(startTime.getTime());
+        expectedTimeOfCompletion.add(Calendar.HOUR_OF_DAY, estimatedHoursNeeded);
+
+        Calendar currentDate = Calendar.getInstance();
+        if(expectedTimeOfCompletion.before(currentDate)) {
+            return 0;
+        }
+        else {
+            long timeDifference = expectedTimeOfCompletion.getTimeInMillis() - currentDate.getTimeInMillis();
+            Integer hoursBetween = (int) TimeUnit.MILLISECONDS.toHours(timeDifference);
+            return hoursBetween;
+        }
+    }
+
+    public void setHoursLeft(Integer count) {
+        Calendar newExpectedTimeOfCompletion = Calendar.getInstance();
+        newExpectedTimeOfCompletion.add(Calendar.HOUR_OF_DAY, count);
+        long totalTimeNeeded = newExpectedTimeOfCompletion.getTimeInMillis() - startTime.getTime();
+        Integer totalHoursNeeded = (int) TimeUnit.MILLISECONDS.toHours(totalTimeNeeded);
+        setEstimatedHoursNeeded(totalHoursNeeded + 1);
     }
 
     public String getEstimatedTimeOfCompletion() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(startTime.getTime());
-        calendar.add(Calendar.HOUR_OF_DAY, remainingHours);
-        return calendar.getTime().toString();
+        Calendar expectedTimeOfCompletion = Calendar.getInstance();
+        expectedTimeOfCompletion.setTimeInMillis(startTime.getTime());
+        expectedTimeOfCompletion.add(Calendar.HOUR_OF_DAY, estimatedHoursNeeded);
+        return expectedTimeOfCompletion.getTime().toString();
     }
 
     public Integer getHoursSoFar() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(startTime.getTime());
-        calendar.add(Calendar.HOUR_OF_DAY, remainingHours);
+        Calendar expectedTimeOfCompletion = Calendar.getInstance();
+        expectedTimeOfCompletion.setTimeInMillis(startTime.getTime());
+        expectedTimeOfCompletion.add(Calendar.HOUR_OF_DAY, estimatedHoursNeeded);
         Date currentDate = new Date();
-        if(calendar.before(currentDate)) {
-            return remainingHours;
+        if(expectedTimeOfCompletion.before(currentDate)) {
+            return estimatedHoursNeeded;
         }
         else {
             long timeDifference = currentDate.getTime() - startTime.getTime();
@@ -169,7 +192,7 @@ public class Task {
         if (taskContent != null ? !taskContent.equals(task.taskContent) : task.taskContent != null) return false;
         if (taskName != null ? !taskName.equals(task.taskName) : task.taskName != null) return false;
         if (startTime != null ? !startTime.equals(task.startTime) : task.startTime != null) return false;
-        if (remainingHours != null ? !remainingHours.equals(task.remainingHours) : task.remainingHours != null)
+        if (estimatedHoursNeeded != null ? !estimatedHoursNeeded.equals(task.estimatedHoursNeeded) : task.estimatedHoursNeeded != null)
             return false;
 
         return true;
@@ -181,7 +204,7 @@ public class Task {
         result = 31 * result + (taskContent != null ? taskContent.hashCode() : 0);
         result = 31 * result + (taskName != null ? taskName.hashCode() : 0);
         result = 31 * result + (startTime != null ? startTime.hashCode() : 0);
-        result = 31 * result + (remainingHours != null ? remainingHours.hashCode() : 0);
+        result = 31 * result + (estimatedHoursNeeded != null ? estimatedHoursNeeded.hashCode() : 0);
         return result;
     }
 
@@ -192,7 +215,7 @@ public class Task {
                 ", taskContent='" + taskContent + '\'' +
                 ", taskName='" + taskName + '\'' +
                 ", startTime=" + startTime +
-                ", remainingHours=" + remainingHours +
+                ", estimatedHoursNeeded=" + estimatedHoursNeeded +
                 ", status=" + status +
                 ", user=" + user +
                 '}';

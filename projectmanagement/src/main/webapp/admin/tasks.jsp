@@ -72,7 +72,7 @@
                                         <c:forEach items="${tasks}" var="task">
                                             <tr>
                                                 <td><c:out value="${task.getTaskId()}"/></td>
-                                                <td><c:out value="${task.getTaskName()}"/></td>
+                                                <td><a href="task?taskid=<c:out value="${task.getTaskId()}"/>"><c:out value="${task.getTaskName()}"/></a></td>
                                                 <td><c:out value="${task.getEstimatedTimeOfCompletion()}"/></td>
                                                 <td><c:out value="${task.getStatus().getStatusName()}"/></td>
                                                 <td><c:out value="${task.getHoursSoFar()}h"/></td>

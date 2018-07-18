@@ -52,56 +52,48 @@
 <br>
 <br>
 <br>
-<div class="input-group">
-    <div class="input-group-prepend">
-        <span class="input-group-text">Title</span>
-    </div>
-    <input type="text" class="form-control" name="title" disabled="disabled"
-           value="<c:out value="${project.getProjectTitle()}"/>">
 
-</div>
-<br>
-<div class="input-group">
-    <div class="input-group-prepend">
-        <span class="input-group-text">Description</span>
-    </div>
-    <textarea class="form-control" name="description" rows="7" disabled="disabled">
-            <c:out value="${project.getProjectContent()}"/>
-            </textarea>
-</div>
-<br>
-<div class="input-group">
-    <div class="input-group-prepend">
-        <span class="input-group-text">Release Date</span>
-    </div>
-    <input class="form-control" id="datepicker" name="releasedate" placeholder="YYYY/MM/DD" type="text"
-           disabled="disabled" value="<c:out value="${project.getReleaseDate()}"/>"/>
-</div>
-<br>
 
-<div>
-    <table style="width:100%">
-        <tr>
-            <th>Task ID</th>
-            <th>Task Name</th>
-            <th>Estimated time of Completion</th>
-            <th>Status</th>
-            <th>Time so far</th>
-            <th>Assigned to</th>
-        </tr>
-        <c:forEach items="${project.getTasks()}" var="task">
-            <tr>
-                <td><c:out value="${task.getTaskId()}"/></td>
-                <td><a href="task?taskid=<c:out value="${task.getTaskId()}"/>"><c:out value="${task.getTaskName()}"/></a></td>
-                <td><c:out value="${task.getEstimatedTimeOfCompletion()}"/></td>
-                <td><c:out value="${task.getStatus().getStatusName()}"/></td>
-                <td><c:out value="${task.getHoursSoFar()}h"/></td>
-                <td><c:out value="${task.getUser().getUserName()}"/></td>
-            </tr>
-        </c:forEach>
-    </table>
-</div>
-
+<br>
+<form class="update-task" action="/admin/updatetask" METHOD="POST">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Title</span>
+        </div>
+        <input type="text" class="form-control" name="title" disabled="disabled"
+               value="<c:out value="${task.getTaskName()}"/>">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Description</span>
+            </div>
+            <textarea class="form-control" name="taskcontent" rows="7"><c:out value="${task.getTaskContent()}"/></textarea>
+        </div>
+        <br>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Hours remaining</span>
+            </div>
+            <input name="remainingtime" type="number" value="<c:out value="${task.getHoursLeft()}"/>" min="0"
+                   class="form-control currency"/>
+        </div>
+        <br>
+        <div class="btn-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Status</span>
+            </div>
+            <select name="status" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <c:forEach items="${statuses}" var="status" varStatus="loop">
+                    <option  <c:if test="${status.getStatusId() == task.getStatus().getStatusId()}">selected="selected"</c:if> value= "${status.getStatusId()}">
+                        <c:out value="${status.getStatusName()}"/>
+                    </option>
+                </c:forEach>
+            </select>
+        </div>
+    </div>
+    <br>
+    <input type="submit" value="Update" class="btn btn-outline-primary"/>
+    <input type="hidden" id="custId" name="taskid" value="${param.taskid}">
+</form>
 
 </body>
 </html>
