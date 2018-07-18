@@ -484,4 +484,9 @@ $(document).ready(function () {
         autoclose: true
     });
 
+    $(document).ready(function(){
+        $(".dropdown-toggle").dropdown();
+    });
+
 });
+

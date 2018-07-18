@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
 <head>
@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="../css/animate.min.css">
     <link rel="stylesheet" href="../css/owl.carousel.css">
     <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
 </head>
 
 <body>
@@ -32,7 +31,7 @@
                     <li id="generatereportadmin"><a href="generate_report.jsp">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
-                            <input type="submit" value="Logout" class="btn btn-outline-primary"/>
+                            <button type="submit">Logout</button>
                         </form>
                     </li>
                 </ul>
@@ -40,52 +39,38 @@
         </div>
     </div>
 </header>
-
-<section class="banner-area"><br><br><br>
+<section class="banner-area">
     <div class="container">
-        <div class="row fullscreen align-items-left justify-content-between">
+        <div class="row fullscreen align-items-center justify-content-between">
             <div class="col-lg-12 col-md-12 banner">
-                <div id="accordion">
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    View all projects
-                                </button>
-                            </h5>
-                        </div>
+                <div class="container-my-open-issues">
+					<ul class="sub-menu-projects">
+                        <li><a href="all_tasks_admin.jsp">View All Tasks</a></li>
+                        <li><a href="add_task_admin.jsp">Add Task</a></li>
+                        <li><a href="edit_task_admin.jsp">Edit Task</a></li>
+					</ul>
+                    <br>
+					
+                    <h3>Edit Task</h3>
+                    <p>Change Status</p>
+                    <input name="changestatus" type="text">
+                    <p>Add Time</p>
+                    <input name="addtime" type="text">
+                    <p>Add Comment</p>
+                    <input name="addcomment" type="text">
+                    <p>Modify Description</p>
+                    <input name="modifydescription" type="text">
 
-                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <div>
-                                    <c:out value="all_projects_admin" escapeXml="false" />
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Create new project
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                            <div class="card-body">
-                                <jsp:include page="create_new_project.jsp" />
-
-                            </div>
-                        </div>
-                    </div>
+                    <p>Attach Files</p>
+                    <input type="file" name="pic" accept="image/*">
+                    <input type="submit">
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-
-<!-- start footer Area -->
 <footer class="footer">
     <p>&copy; 2018 by Team 1</p>
 </footer>
@@ -108,8 +93,6 @@
 <script src="../js/owl.carousel.min.js"></script>
 <script src="../js/mail-script.js"></script>
 <script src="../js/main.js"></script>
-<script type="application/javascript" src="../js/vendor/bootstrap.min.js"></script>
-<script type="application/javascript" src="../js/bootstrap-datepicker.js"></script>
 
 </body>
 </html>

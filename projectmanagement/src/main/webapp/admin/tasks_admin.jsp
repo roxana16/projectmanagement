@@ -9,11 +9,13 @@
     <link rel="stylesheet" href="../css/linearicons.css">
     <link rel="stylesheet" href="../css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/magnific-popup.css">
     <link rel="stylesheet" href="../css/nice-select.css">
     <link rel="stylesheet" href="../css/animate.min.css">
     <link rel="stylesheet" href="../css/owl.carousel.css">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
 </head>
 
 <body>
@@ -31,7 +33,7 @@
                     <li id="generatereportadmin"><a href="generate_report.jsp">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
-                            <button type="submit">Logout</button>
+                            <input type="submit" value="Logout" class="btn btn-outline-primary"/>
                         </form>
                     </li>
                 </ul>
@@ -39,17 +41,57 @@
         </div>
     </div>
 </header>
-<section class="banner-area">
+
+<section class="banner-area"><br><br><br>
     <div class="container">
-        <div class="row fullscreen align-items-center justify-content-between">
+        <div class="row fullscreen align-items-left justify-content-between">
             <div class="col-lg-12 col-md-12 banner">
-                <div class="container-my-open-issues">
-				    <ul class="sub-menu-projects">
-                        <li><a href="all_tasks_admin.jsp">View All Tasks</a></li>
-                        <li><a href="add_task_admin.jsp">Add Task</a></li>
-                        <li><a href="edit_task_admin.jsp">Edit Task</a></li>
-					</ul>
-                    <br>
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    View All Tasks
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                <div>
+                                    <c:out value="all_tasks_admin" escapeXml="false" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Add Task
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                <jsp:include page="add_task_admin.jsp" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Edit Task
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                <jsp:include page="edit_task_admin.jsp" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -78,6 +120,10 @@
 <script src="../js/owl.carousel.min.js"></script>
 <script src="../js/mail-script.js"></script>
 <script src="../js/main.js"></script>
+<script type="application/javascript" src="../js/vendor/bootstrap.min.js"></script>
+<script type="application/javascript" src="../js/bootstrap-datepicker.js"></script>
+
+
 
 </body>
 </html>
