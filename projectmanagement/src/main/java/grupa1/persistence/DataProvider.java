@@ -14,6 +14,7 @@ public interface DataProvider {
     Integer addComment(Comment comment);
     List<Status> getAllStatuses();
     List<Project> getAllProjects();
+    List<User> getAllUsers();
     void commitChanges();
 
 }

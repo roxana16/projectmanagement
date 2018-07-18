@@ -13,7 +13,7 @@ public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    System.out.println("eroare logout");
+    System.out.println("eroare, logout");
         HttpSession session = request.getSession(false);
         if(session != null){
             session.invalidate();

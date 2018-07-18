@@ -37,7 +37,7 @@
 <section class="banner-area">
     <div class="container">
         <div class="row fullscreen align-items-center justify-content-between">
-            <div class="col-lg-6 col-md-6 banner-left">
+            <div class="view-data">
                 <div class="login">
                     <form action="login" method="POST">
                         <h3>Log in</h3><br>
@@ -66,23 +66,21 @@
     <div class="container">
         <div class="row align-items-center justify-content-between">
             <div class="col-lg-6 col-md-6 home-about-left">
-                <img class="img-fluid" src="img/about.png" alt="">
+                <img class="img-fluid" src="img/about.jpg"width="450" height="120" alt="">
             </div>
             <div class="col-lg-5 col-md-6 home-about-right">
                 <h6>PMT - PRODUCTIVE | MOTIVATED | THINKING outside the box</h6>
-                <h3 class="text-uppercase">Details</h3>
+                <h3 class="text-uppercase">About PMT</h3>
+                <p>  </p>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie, nisl eu feugiat porttitor,
-                    turpis risus luctus sapien, ac egestas augue diam et enim. Vivamus at neque id nulla suscipit luctus
-                    quis vitae turpis. Quisque orci urna, volutpat ut consequat a, tincidunt eget nunc. Proin accumsan
-                    bibendum justo dapibus elementum. Duis convallis nibh at scelerisque mattis. Aliquam dapibus tellus
-                    metus, ac sollicitudin mi cursus in. In tincidunt dolor neque, et dapibus sem porta vitae. Quisque
-                    massa urna, sollicitudin quis nunc vel, vestibulum eleifend libero. Proin porttitor malesuada elit
-                    elementum lobortis. Nunc placerat mi eleifend ipsum venenatis vestibulum. Phasellus arcu odio,
-                    semper non dui at, dapibus hendrerit lacus. Phasellus dui metus, luctus sed purus ac, gravida
-                    interdum massa.
-                </p>
-                <a href="#" class="primary-btn text-uppercase">View Full Details</a>
+                    PMT is our newest tool to help you enhance your project management.
+                If you're looking to bring some extra efficiency to your team,try PMT and you will skyrocket your project performance.</p>
+
+				 <a id="but_detalii" class="primary-btn text-uppercase" onclick="myFunction();">View Full Details</a>
+				<div id="myDIV" class="myDIV"  style="display: none">
+				<p>PMT is a innovative tool that helps you create insightful reports about completed tasks and team members performance.The unscheduled time helps you set realistic deadlines and avoid overbooking people. Try it out and if you have feedback please contact us!</p>
+				</div>
+
             </div>
         </div>
     </div>
@@ -114,17 +112,26 @@
         <div class="row justify-content-center">
             <div class="col-md-8 pb-30 header-text">
                 <h1>Do you need help?</h1>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie, nisl eu feugiat porttitor,
-                    turpis risus luctus sapien, ac egestas augue diam et enim. Vivamus at neque id nulla suscipit luctus
-                    quis vitae turpis. Quisque orci urna, volutpat ut consequat a, tincidunt eget nunc. Proin accumsan
-                    bibendum justo dapibus elementum. Duis convallis nibh at scelerisque mattis. Aliquam dapibus tellus
-                    metus, ac sollicitudin mi cursus in. In tincidunt dolor neque, et dapibus sem porta vitae. Quisque
-                    massa urna, sollicitudin quis nunc vel, vestibulum eleifend libero. Proin porttitor malesuada elit
-                    elementum lobortis. Nunc placerat mi eleifend ipsum venenatis vestibulum. Phasellus arcu odio,
-                    semper non dui at, dapibus hendrerit lacus. Phasellus dui metus, luctus sed purus ac, gravida
-                    interdum massa.
-                </p>
+
+                     <p>Email us with any question or inquiries or call 0734/543.210.We would be happy
+					 to answer your questions and set up a meeting with you. PMT can help you manage the workload on a busy day!</p>
+					 <div class="container" align="center">
+
+
+	<form action="help" method="POST">
+		<h6>First Name</h6>
+		<input type="text" name="firstname">
+		<h6>Last Name</h6>
+		<input name="lastname"><br>
+		<h6>Email</h6>
+		<input name="email"><br>
+		<h6>Subject</h6>
+		<textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea><br>
+		<br>
+		<input type="submit" value="Send"/>
+	</form>
+</div>
+
             </div>
         </div>
     </div>
@@ -158,7 +165,7 @@
         $("#about").click(function () {
             $('html, body').animate({
                 scrollTop: $("#myAbout").offset().top
-            }, 1500);
+            }, 2000);
         });
     })
 
@@ -166,7 +173,7 @@
         $("#team").click(function () {
             $('html, body').animate({
                 scrollTop: $("#myTeam").offset().top
-            }, 1500);
+            }, 2000);
         });
     })
 
@@ -174,9 +181,17 @@
         $("#help").click(function () {
             $('html, body').animate({
                 scrollTop: $("#myHelp").offset().top
-            }, 1500);
+            }, 2000);
         });
     })
+
+	function myFunction() {
+		var x = document.getElementById("myDIV");
+		x.style.display = "block";
+
+		x = document.getElementById("but_detalii");
+		x.style.display = "none";
+	}
 </script>
 </body>
 </html>
