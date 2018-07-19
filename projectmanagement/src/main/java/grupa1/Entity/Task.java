@@ -39,11 +39,13 @@ public class Task {
     @JoinColumn(name = "projectId", nullable = false)
     private Project project;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userId")
     private User user;
 
-    @OneToMany(mappedBy = "task")
+    //this is a really bad idea, but it makes my life easy
+    @OneToMany(mappedBy = "task", fetch = FetchType.EAGER)
+    @OrderBy("timeMade DESC")
     private List<Comment> comments;
 
 

@@ -22,7 +22,7 @@ public class Comment {
     @JoinColumn(name = "taskId", nullable = false)
     private Task task;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 

@@ -1,9 +1,6 @@
 package grupa1;
 
-import grupa1.Entity.Project;
-import grupa1.Entity.Status;
-import grupa1.Entity.Task;
-import grupa1.Entity.User;
+import grupa1.Entity.*;
 import grupa1.persistence.DataProvider;
 import grupa1.persistence.HibernateDataProvider;
 

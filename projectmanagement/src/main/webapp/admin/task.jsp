@@ -92,7 +92,36 @@
     </div>
     <br>
     <input type="submit" value="Update" class="btn btn-outline-primary"/>
-    <input type="hidden" id="custId" name="taskid" value="${param.taskid}">
+    <input type="hidden" id="taskId1" name="taskid" value="${param.taskid}">
+</form>
+<br>
+<div>
+
+    <c:forEach items="${task.getComments()}" var="comment">
+        <div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><c:out value="${comment.getUser().getUserName()}"/></span>
+                </div>
+                <input type="text" class="form-control" name="title" disabled="disabled"
+                       value="<c:out value="${comment.getCommentContent()}"/>">
+
+            </div>
+        </div>
+    </c:forEach>
+
+</div>
+
+<br>
+<form class="add-comment" action="/admin/addcomment" METHOD="POST">
+    <div class="input-group">
+        <div class="input-group">
+            <textarea class="form-control" name="commentcontent" rows="7"></textarea>
+        </div>
+    </div>
+    <br>
+    <input type="submit" value="Post Comment" class="btn btn-outline-primary"/>
+    <input type="hidden" id="taskid2" name="taskid" value="${param.taskid}">
 </form>
 
 </body>
