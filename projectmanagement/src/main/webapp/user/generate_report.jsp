@@ -43,7 +43,7 @@
                     <li id="generatereportadmin"><a href="/user/report">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
-                            <button type="submit">Logout</button>
+                            <input type="submit" value="Logout" class="btn btn-outline-primary"/>
                         </form>
                     </li>
                 </ul>
