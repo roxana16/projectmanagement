@@ -46,6 +46,7 @@
                             <input type="submit" value="Logout" class="btn btn-outline-primary"/>
                         </form>
                     </li>
+                    </li>
                 </ul>
             </nav>
         </div>
