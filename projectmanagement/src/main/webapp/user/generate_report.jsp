@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -15,6 +16,9 @@
     <link rel="stylesheet" href="../css/owl.carousel.css">
     <link rel="stylesheet" href="../css/main.css">
 
+    <script src="../js/Chart.bundle.min.js"></script>
+    <script src="../js/utils.js"></script>
+
     <style>
         canvas {
             -moz-user-select: none;
@@ -22,7 +26,6 @@
             -ms-user-select: none;
         }
     </style>
-
 </head>
 
 <body>
@@ -35,9 +38,9 @@
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
                     <li><a href="index.jsp">Home</a></li>
-                    <li id="projectsuser"><a href="/user/projects">Projects</a></li>
+                    <li id="projectsadmin"><a href="/user/projects">Projects</a></li>
                     <li id="tasks"><a href="/user/tasks">Tasks</a></li>
-                    <li id="generatereportuser"><a href="generate_report.jsp">Generate Report</a></li>
+                    <li id="generatereportadmin"><a href="/user/report">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
                             <button type="submit">Logout</button>
@@ -48,23 +51,33 @@
         </div>
     </div>
 </header>
-<section class="generate-reports-user">
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div id="reportpie">
+</div>
+
+<section class="banner-area">
     <div class="container">
-        <!--    <div class="row fullscreen align-items-center justify-content-between"> -->
-        <div class="generating">
-            <h4>My reports</h4>
-            <div class="charts-result">
-                <form action=""
-                <canvas id="pie-chart"></canvas>
+        <div class="row fullscreen align-items-center justify-content-between">
+            <div class="col-lg-12 col-md-12 banner">
+                <canvas id="canvas"></canvas>
             </div>
         </div>
     </div>
+    </div>
 </section>
 
+
+<!-- start footer Area -->
 <footer class="footer">
     <p>&copy; 2018 by Team 1</p>
 </footer>
-
+<script src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="../js/vendor/jquery-2.2.4.min.js"></script>
 <script src="../js/popper.min.js"></script>
 <script src="../js/vendor/bootstrap.min.js"></script>
@@ -84,29 +97,28 @@
 <script src="../js/mail-script.js"></script>
 <script src="../js/main.js"></script>
 
-<script src="../js/Chart.bundle.min.js"></script>
-<script src="../js/utils.js"></script>
+<script type="text/javascript">
+    // Load google charts
+    google.charts.load('current', {'packages': ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
 
+    // Draw the chart and set the chart values
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Status', 'Number of tasks'],
+            <c:forEach items="${statusCounts}" var="status">
+            ['${status.getKey()}', ${status.getValue()}],
 
-<script>
-    new Chart(document.getElementById("pie-chart"), {
-        type: 'pie',
-        data: {
-            labels: ["Closed", "Open", "On Hold"],
-            datasets: [{
-                label: "Population (millions)",
-                backgroundColor: ["#E90909", "#00FF00", "#FF8000"],
-                data: [35, 22, 10]
-            }]
-        },
-        options: {
-            title: {
-                display: true,
-                text: 'Task Status'
-            }
-        }
-    });
+            </c:forEach>
+        ]);
+
+        // Optional; add a title and set the width and height of the chart
+        var options = {'title': 'Status of all tasks', 'width': 700, 'height': 600};
+
+        // Display the chart inside the <div> element with id="piechart"
+        var chart = new google.visualization.PieChart(document.getElementById('reportpie'));
+        chart.draw(data, options);
+    }
 </script>
-
 </body>
 </html>

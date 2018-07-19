@@ -28,7 +28,7 @@
                     <li><a href="index.jsp">Home</a></li>
                     <li id="projectsuser"><a href="/user/projects">Projects</a></li>
                     <li id="tasks"><a href="/user/tasks">Tasks</a></li>
-                    <li id="generatereportuser"><a href="generate_report.jsp">Generate Report</a></li>
+                    <li id="generatereportuser"><a href="/user/report">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
                             <button type="submit">Logout</button>

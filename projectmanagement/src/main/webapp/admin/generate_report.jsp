@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -50,6 +51,29 @@
         </div>
     </div>
 </header>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<form class="create-task" action="/admin/report" METHOD="GET">
+    <div class="btn-group">
+        <select name="username" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <c:forEach items="${users}" var="user" varStatus="loop">
+                <option value = ${user.getUserId()}><c:out value="${user.getUserName()}"/></option>
+            </c:forEach>
+        </select>
+    </div>
+    <br>
+    <input type="submit" value="Generate Report" class="btn btn-outline-primary"/>
+</form>
+
+<div id="reportpieglobal">
+</div>
+<div id="reportpieuser">
+</div>
+
 <section class="banner-area">
     <div class="container">
         <div class="row fullscreen align-items-center justify-content-between">
@@ -66,7 +90,7 @@
 <footer class="footer">
     <p>&copy; 2018 by Team 1</p>
 </footer>
-
+<script src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="../js/vendor/jquery-2.2.4.min.js"></script>
 <script src="../js/popper.min.js"></script>
 <script src="../js/vendor/bootstrap.min.js"></script>
@@ -86,65 +110,28 @@
 <script src="../js/mail-script.js"></script>
 <script src="../js/main.js"></script>
 
-<script>
-    var color = Chart.helpers.color;
-    var barChartData = {
-        labels: ['Maria', 'Corina', 'Crina', 'Andrei'],
-        datasets: [{
-            label: 'New',
-            backgroundColor: color(window.chartColors.yellow).alpha(0.5).rgbString(),
-            borderColor: window.chartColors.yellow,
-            borderWidth: 1,
-            data: [
-                18,
-                25,
-                5,
-                50,
-            ]
-        }, {
-            label: 'In progress',
-            backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-            borderColor: window.chartColors.red,
-            borderWidth: 1,
-            data: [
-                Math.abs(randomScalingFactor()),
-                Math.abs(randomScalingFactor()),
-                Math.abs(randomScalingFactor()),
-                Math.abs(randomScalingFactor()),
-            ]
-        }, {
-            label: 'Finished',
-            backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-            borderColor: window.chartColors.blue,
-            borderWidth: 1,
-            data: [
-                Math.abs(randomScalingFactor()),
-                Math.abs(randomScalingFactor()),
-                Math.abs(randomScalingFactor()),
-                Math.abs(randomScalingFactor()),
-            ]
-        }]
+<script type="text/javascript">
+    // Load google charts
+    google.charts.load('current', {'packages': ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
 
-    };
+    // Draw the chart and set the chart values
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+                ['Status', 'Number of tasks'],
+            <c:forEach items="${statusCounts}" var="status">
+            ['${status.getKey()}', ${status.getValue()}],
 
-    window.onload = function () {
-        var ctx = document.getElementById('canvas').getContext('2d');
-        window.myBar = new Chart(ctx, {
-            type: 'bar',
-            data: barChartData,
-            options: {
-                responsive: true,
-                legend: {
-                    position: 'top',
-                },
-                title: {
-                    display: true,
-                    text: 'User Task Status'
-                }
-            }
-        });
+            </c:forEach>
+    ]);
 
-    };
+        // Optional; add a title and set the width and height of the chart
+        var options = {'title': 'Status of all tasks', 'width': 700, 'height': 600};
+
+        // Display the chart inside the <div> element with id="piechart"
+        var chart = new google.visualization.PieChart(document.getElementById('reportpieglobal'));
+        chart.draw(data, options);
+    }
 </script>
 </body>
 </html>

@@ -36,7 +36,7 @@
                     <li><a href="/admin/index.jsp">Home</a></li>
                     <li id="projectsadmin"><a href="/admin/projects">Projects</a></li>
                     <li id="tasks"><a href="/admin/tasks">Tasks</a></li>
-                    <li id="generatereportadmin"><a href="/admin/generate_report.jsp">Generate Report</a></li>
+                    <li id="generatereportadmin"><a href="/admin/report">Generate Report</a></li>
                     <li>
                         <form action="/logout" method="POST">
                             <input type="submit" value="Logout" class="btn btn-outline-primary"/>
